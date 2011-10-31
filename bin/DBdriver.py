@@ -1,0 +1,64 @@
+'''
+DBdriver - Manages the query system to the database, this is the driver for
+    sqlite3
+--------------------------------------------------------------------------------
+
+Copyright (C) 2011 Ismael Farfán. All rights reserved.
+
+This file is part of Thiao.
+
+Thiao is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+Thiao is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+Thiao.  If not, see <http://www.gnu.org/licenses/>.
+
+--------------------------------------------------------------------------------
+
+* vm_id - local identifier, used for contextualization
+* onevm_id - id of the running instance
+* job_id - id of a batch job
+* state - numerical state of the running machine
+
+'''
+
+import sqlite3
+import ConfigLoader
+
+con = sqlite3.connect(ConfigLoader.thiaoHome + "/" + ConfigLoader.dbFile)
+con.isolation_level = None #auto-commit??
+
+
+
+query_list_down_vms = "select vm_id from vm_job_map where onevm_id = -1" 
+
+
+
+
+'''
+Updates the database with the information of the vms running a job
+@param vmid: contextualized vm
+@param oneid: OpenNebula identifier for the vm
+@param jid: SLURM job id
+'''
+query_register_vm_job = "update vm_job_map set onevm_id=%d, job_id=%d where vm_id=%d" #%(one_id, tid, v) 
+
+
+
+# unit tests here
+if __name__ == "__main__":
+    print ("retrieving vm information")
+    cur = con.execute("select * from vm_job_map")
+    print ("vm  onevm  job  state")
+    for i in cur:
+        print (i)
+    print ("list_down_vms")
+    down = list_down_vms()
+    print ("down: ", down)
+
+

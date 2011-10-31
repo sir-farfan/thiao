@@ -1,0 +1,47 @@
+#---------------------------------------
+# VM definition example
+#---------------------------------------
+
+NAME	= "vmg-fg"
+
+vCPU	= 3
+CPU		= 1
+MEMORY	= 3000
+OS	= [ ARCH = "x86_64"]
+#	    BOOT = "sda1" ]
+
+DISK = [ 
+	source = "/N/project/opennebula/img/d-testing.img",
+	target = "hda",
+	driver = "qcow2",
+	readonly = "no",
+	clone = "yes" ]
+
+NIC = [ NETWORK = "fg1" ]
+NIC = [ NETWORK = "fg2" ]
+
+CONTEXT = [
+#	hostname   = "vmg",
+#	ip_public  = "198.202.121.1",
+	gw         = "$NETWORK[GATEWAY, NAME=\"fg1\"]",
+#	ip_public  = "172.20.6.$VMID",
+	vmid	   = $VMID,
+	hn_base    = "fg",
+	ip_base    = "198.202.121.",
+	netmask    = "255.255.254.0",
+	ip2_base   = "192.168.11.",
+	dns        = "$NETWORK[DNS, NAME=\"fg1\"]",
+	files      = "/etc/slurm-llnl/slurm.conf /opt/thiao/examples/mio.sh /opt/thiao/examples/mictx.sh",
+	target     = "hdb"
+]
+
+FEATURES = [ ACPI="yes" ]
+
+# --- servidor vnc ---
+
+GRAPHICS = [ 
+	type   = "vnc",
+	listen = "127.0.0.1"]
+
+
+
