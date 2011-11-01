@@ -13,13 +13,23 @@ Installing:
 Note: this should work as long as you have a *WORKING* SLURM and OpenNebula
 installation.
 
-Copy everything to /opt/thiao
-Make sure /opt/thiao/thiao.df is writable for anyone using Thiao
+sudo mkdir /opt/thiao
+sudo chmod 777 /opt/thiao
+cd /opt/thiao
+git clone git://github.com/scarmiglione/thiao.git .
+chmod 666 thiao.db
+./bin/Setup
+
+Set the *OneAuth* variable in *thiao.cfg* and make sure the user slurm can read it
+(it's needed if you want SLURM to call the tclean.py script every time a job
+finishes it's execution).
+
+
 Optional: add /opt/thiao/bin to your PATH
 
 
-Simplest use case:
-------------------
+First use case:
+---------------
 
 Use fsub.py to submit your jobs, fsub.py will forward the request to sbatch,
 retrieve the job id, and launch the virtual machines in which the job will run.
