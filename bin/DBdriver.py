@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 '''
 DBdriver - Manages the query system to the database, this is the driver for
     sqlite3
@@ -30,6 +33,7 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 import sqlite3
 import ConfigLoader
 
+print ("Opening db ", ConfigLoader.thiaoHome + "/" + ConfigLoader.dbFile)
 con = sqlite3.connect(ConfigLoader.thiaoHome + "/" + ConfigLoader.dbFile)
 con.isolation_level = None #auto-commit??
 
@@ -37,6 +41,9 @@ con.isolation_level = None #auto-commit??
 
 query_list_down_vms = "select vm_id from vm_job_map where onevm_id = -1" 
 
+query_list_vms4job = "select onevm_id from vm_job_map where job_id = %d"
+
+query_clean_vm4job = "update vm_job_map set job_id=-1, onevm_id=-1 where onevm_id=%d"
 
 
 
@@ -50,15 +57,16 @@ query_register_vm_job = "update vm_job_map set onevm_id=%d, job_id=%d where vm_i
 
 
 
+
 # unit tests here
 if __name__ == "__main__":
     print ("retrieving vm information")
-    cur = con.execute("select * from vm_job_map")
+    cur = con.execute("select vm_id, onevm_id, job_id, state from vm_job_map")
     print ("vm  onevm  job  state")
     for i in cur:
         print (i)
     print ("list_down_vms")
-    down = list_down_vms()
-    print ("down: ", down)
+#    down = list_down_vms()
+#    print ("down: ", down)
 
 
