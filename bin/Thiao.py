@@ -1,5 +1,7 @@
+# -*- coding: UTF-8 -*-
+
 '''
-thiao.py - common functions used by most Thiao files
+Thiao.py - common functions used by most Thiao files
 
 --------------------------------------------------------------------------------
 
@@ -69,12 +71,12 @@ def get_job_requirements(job_id):
 
 
 
-def launch_vm(vm_id, job_id):
+def launch_vm(vm_id, job):
     '''
     launches the VMs specified in the vm_id vector, the id can be passed to the
     vm definition file
     @param vm_id: vector with the id of the VMs to launch
-    @param job_id: id of the job supposed to run in the VMs 
+    @param job: id of the job supposed to run in the VMs 
     '''
     for v in vm_id:
 #        f = open(ruta+"vm%d.one"%v, "w")
@@ -86,26 +88,27 @@ def launch_vm(vm_id, job_id):
         print (one_id)
         one_id = int ( one_id[0].split()[1] ) # ('ID: 40\n', None)
         print ("updating db")
-        DBdriver.con.execute(DBdriver.query_register_vm_job%(v, one_id, job_id))
+        print (DBdriver.query_register_vm_job%(one_id, job, v))
+        DBdriver.con.execute(DBdriver.query_register_vm_job%(one_id, job, v))
 
 
 
 
-def clean_job(jid):
+def clean_job(job):
     '''
     Shuts down the VMs that were supposed to execute the job and updates the
     database
-    @param jid: id of the (finished) job 
+    @param job: id of the (finished) job 
     '''
-    print ("cleanning", jid)
-    vms = list_vms("where jid=%d"%jid)
+    print ("--------cleanning---------- ", job)
+    vms = list_vms4job(job)
     for v in vms:
-        v = v[1]
-        print ("apagando vm", v)
+        print ("shutting down vm", v)
+        print ("onevm -v shutdown %d"%v)
         param = shlex.split( "onevm -v shutdown %d"%v )
         p = subprocess.Popen(param, stdout=subprocess.PIPE)
         print ( p.communicate() )
-        con.execute("update mapa set jid=-1, oneid=-1 where oneid=%d"%v)
+        DBdriver.con.execute(DBdriver.query_clean_vm4job%v)
         
  
  
@@ -116,6 +119,21 @@ def list_down_vms():
     @return: list of VM ids 
     '''
     cur = DBdriver.con.execute(DBdriver.query_list_down_vms)
+    vms = []
+    for i in cur:
+        vms.append(i[0])
+    return vms
+
+
+
+def list_vms4job(job):
+    '''
+    Gets the list of vms that are running (or ran) the job
+    @param job: slurm job id 
+    @return: list of OpenNebula IDs of the VMs running the job
+    '''
+    print (DBdriver.query_list_vms4job%job)
+    cur = DBdriver.con.execute( DBdriver.query_list_vms4job%job )
     vms = []
     for i in cur:
         vms.append(i[0])
