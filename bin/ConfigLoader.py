@@ -32,6 +32,8 @@ config.read("/opt/thiao/thiao.cfg")
 
 thiaoHome = config.get("Thiao", "ThiaoHome")
 dbFile    = config.get("Thiao", "DBfile") 
+tcleanLog = config.get("Thiao", "tcleanLog")
+oneAuth   = config.get("Thiao", "OneAuth")
 
 createVMFile = config.getboolean("vm", "CreateVMFile")
 vmTemplate   = config.get("vm", "VMTemplate")
@@ -41,6 +43,8 @@ if __name__ == "__main__":
     print ("[Thiao]")
     print ("ThiaoHome", thiaoHome)
     print ("DBfile", dbFile)
+    print ("tcleanLog", tcleanLog)
+    print ("OneAuth", oneAuth)
     print ("[vm]")
     print ("CreateVMFile", createVMFile)
     print ("VMTemplate", vmTemplate)
