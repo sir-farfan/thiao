@@ -1,0 +1,26 @@
+127.0.0.1       localhost
+192.168.11.1    fgserver
+127.0.0.1       ip6-localhost ip6-loopback
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+
+192.168.11.240	fg0
+192.168.11.241	fg1
+192.168.11.242	fg2
+192.168.11.243	fg3
+192.168.11.244	fg4
+192.168.11.245	fg5
+192.168.11.246	fg6
+192.168.11.247	fg7
+192.168.11.248	fg8
+192.168.11.249	fg9
+192.168.11.250	fg10
+
+
