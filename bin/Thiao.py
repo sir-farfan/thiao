@@ -93,6 +93,47 @@ def launch_vm(vm_id, job):
 
 
 
+def launch_vm_by_name(host):
+    '''
+    launches the VM specified in host, looking for the appropriate [host].one
+    file in VMScriptDir
+    @param hosts: vector with the id of the VMs to launch 
+    '''
+    
+#    f = open(ruta+"vm%d.one"%host, "w")
+#    f.write( definicion%(host, mem, host, host, host) )
+#    f.close()
+    param = shlex.split( "onevm -host create " + ConfigLoader.vmScriptDir + host + ".one")
+    p = subprocess.Popen(param, stdout=subprocess.PIPE)
+    one_id = p.communicate()
+    print (one_id)
+    one_id = int ( one_id[0].split()[1] ) # ('ID: 40\n', None)
+    print ("updating db")
+    print (DBdriver.query_register_vm_job%(host, one_id))
+    DBdriver.con.execute(DBdriver.query_register_hosname_oneid%(host, one_id))
+
+
+
+def shutdown_vm_by_name(host):
+    '''
+    Shuts down the VM corresponding to the hostname host
+    @param host: name of the host to shutdown
+    '''
+    
+#    f = open(ruta+"vm%d.one"%host, "w")
+#    f.write( definicion%(host, mem, host, host, host) )
+#    f.close()
+    cur = DBdriver.con.execute(DBdriver.query_get_oneid_from_hostname%host)
+    for i in cur: oneid = i[0]
+    param = shlex.split( "onevm -v shutdown " oneid)
+    p = subprocess.Popen(param, stdout=subprocess.PIPE)
+    msg = p.communicate()
+    print (msg)
+    print ("updating db")
+    print (DBdriver.query_delete_hostname%h)
+    DBdriver.con.execute(DBdriver.query_delete_hostname%h)
+
+
 
 def clean_job(job):
     '''
@@ -139,10 +180,33 @@ def list_vms4job(job):
         vms.append(i[0])
     return vms
         
+
+
+def extend_host_list(hosts):
+    '''
+    Given a list of hosts using the format of SLURM (ex: fg0,fg[7-9]),
+    return the extended list of hosts (ex: fg0,fg7,fg8,fg9)
+    @param hosts: list to extend
+    @return: extended list of hosts 
+    '''
+    hlist = []
+    for h in hosts.split(","):
+        if "[" in h:
+            name, ran = h.split("[")
+            ran = ran[:-1]
+            ran = ran.split("-")
+            for i in range( int(ran[0]), int(ran[1])+1 ):
+                hlist.append(name + str(i))
+        else: hlist.append(h)
+    return hlist
+
         
         
 if __name__ == "__main__":
     print ( get_job_requirements(172) )
+
+
+
     
     
     
