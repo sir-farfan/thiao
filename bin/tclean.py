@@ -47,8 +47,8 @@ def usage():
 if __name__ == '__main__':
     #sys.stdout = open("/tmp/tclean.log", "a")
     try: # save the log
-        #sys.stdout = open(Thiao.ConfigLoader.tcleanLog, "a")
-        #sys.stderr = sys.stdout
+        sys.stdout = open(Thiao.ConfigLoader.tcleanLog, "a")
+        sys.stderr = sys.stdout
         pass
     except: pass
     
