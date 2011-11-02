@@ -34,9 +34,13 @@ thiaoHome = config.get("Thiao", "ThiaoHome")
 dbFile    = config.get("Thiao", "DBfile") 
 tcleanLog = config.get("Thiao", "tcleanLog")
 oneAuth   = config.get("Thiao", "OneAuth")
+suspendLog= config.get("Thiao", "SuspendLog")
+resumeLog = config.get("Thiao", "ResumeLog")
 
 createVMFile = config.getboolean("vm", "CreateVMFile")
 vmTemplate   = config.get("vm", "VMTemplate")
+vmScriptDir  = config.get("vm", "VMScriptDir")
+hostnameIsVMfile = config.getboolean("vm", "HostnameIsVMfile")
 
 #unit test, print variables
 if __name__ == "__main__":
@@ -45,9 +49,13 @@ if __name__ == "__main__":
     print ("DBfile", dbFile)
     print ("tcleanLog", tcleanLog)
     print ("OneAuth", oneAuth)
+    print ("SuspendLog", suspendLog)
+    print ("ResumeLog", resumeLog)
     print ("[vm]")
     print ("CreateVMFile", createVMFile)
     print ("VMTemplate", vmTemplate)
+    print ("VMScriptDir", vmScriptDir)
+    print ("HostnameIsVMfile", hostnameIsVMfile)
     
     
     
