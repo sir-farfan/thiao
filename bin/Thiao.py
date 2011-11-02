@@ -103,13 +103,14 @@ def launch_vm_by_name(host):
 #    f = open(ruta+"vm%d.one"%host, "w")
 #    f.write( definicion%(host, mem, host, host, host) )
 #    f.close()
-    param = shlex.split( "onevm -host create " + ConfigLoader.vmScriptDir + host + ".one")
+    #print ("executing: ", "onevm -v create " + ConfigLoader.vmScriptDir + "/" + host + ".one")
+    param = shlex.split( "onevm -v create " + ConfigLoader.vmScriptDir + "/" + host + ".one")
     p = subprocess.Popen(param, stdout=subprocess.PIPE)
     one_id = p.communicate()
     print (one_id)
     one_id = int ( one_id[0].split()[1] ) # ('ID: 40\n', None)
     print ("updating db")
-    print (DBdriver.query_register_vm_job%(host, one_id))
+    print (DBdriver.query_register_hosname_oneid%(host, one_id))
     DBdriver.con.execute(DBdriver.query_register_hosname_oneid%(host, one_id))
 
 
@@ -125,7 +126,7 @@ def shutdown_vm_by_name(host):
 #    f.close()
     cur = DBdriver.con.execute(DBdriver.query_get_oneid_from_hostname%host)
     for i in cur: oneid = i[0]
-    param = shlex.split( "onevm -v shutdown ", oneid)
+    param = shlex.split( "onevm -v shutdown %d"%oneid)
     p = subprocess.Popen(param, stdout=subprocess.PIPE)
     msg = p.communicate()
     print (msg)
