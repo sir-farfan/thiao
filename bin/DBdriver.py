@@ -56,11 +56,11 @@ Updates the database with the information of the vms running a job
 query_register_vm_job = "update vm_job_map set onevm_id=%d, job_id=%d where vm_id=%d" #%(one_id, tid, v) 
 
 
-query_register_hosname_oneid = "update ps_mode set hostname = %s, onevm_id = %d"
+query_register_hosname_oneid = "insert into ps_mode (hostname, onevm_id) values ( '%s', %d )"
 
-query_get_oneid_from_hostname = "select onevm_id from ps_mode where hostname = %s"
+query_get_oneid_from_hostname = "select onevm_id from ps_mode where hostname = '%s'"
 
-query_delete_hostname = "delete from ps_mode where hostname=%s"
+query_delete_hostname = "delete from ps_mode where hostname='%s'"
 
 
 # unit tests here
