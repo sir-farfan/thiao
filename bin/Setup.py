@@ -59,14 +59,18 @@ reset = False  if "y" not in reset.lower()  else True
 
 if reset:
     print ("deleting table in case it exists")
-    try: con.execute("drop table vm_job_map")
+    try: 
+        con.execute("drop table vm_job_map")
+        con.execute("drop table ps_mode")
     except: print ("no table found, ignoring")
     # vm_id: for VM management purposes
     # onevm_id: id return by [onevm create] command
     # job_id: id return by [sbatch] command
     # state: will hold numerical codes to represent the state of the job
-    print ("creating the table")
+    print ("creating the table for job-vm mode")
     con.execute("create table vm_job_map(vm_id integer, onevm_id integer, job_id integer, state integer)")
+    print ("creating table for power saving mode")
+    con.execute("create table ps_mode(hostname text, onevm_id integer)")
 
 
 print ("Which range of virtual machines do you wan to use?")
