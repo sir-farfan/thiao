@@ -56,6 +56,11 @@ Updates the database with the information of the vms running a job
 query_register_vm_job = "update vm_job_map set onevm_id=%d, job_id=%d where vm_id=%d" #%(one_id, tid, v) 
 
 
+query_register_hosname_oneid = "update ps_mode set hostname = %s, onevm_id = %d"
+
+query_get_oneid_from_hostname = "select onevm_id from ps_mode where hostname = %s"
+
+query_delete_hostname = "delete from ps_mode where hostname=%s"
 
 
 # unit tests here
@@ -65,8 +70,9 @@ if __name__ == "__main__":
     print ("vm  onevm  job  state")
     for i in cur:
         print (i)
-    print ("list_down_vms")
-#    down = list_down_vms()
-#    print ("down: ", down)
+    cur = con.execute("select hostname, onevm_id from ps_mode")
+    print ("hostname  onevm")
+    for i in cur:
+        print (i)
 
 
