@@ -125,13 +125,13 @@ def shutdown_vm_by_name(host):
 #    f.close()
     cur = DBdriver.con.execute(DBdriver.query_get_oneid_from_hostname%host)
     for i in cur: oneid = i[0]
-    param = shlex.split( "onevm -v shutdown " oneid)
+    param = shlex.split( "onevm -v shutdown ", oneid)
     p = subprocess.Popen(param, stdout=subprocess.PIPE)
     msg = p.communicate()
     print (msg)
     print ("updating db")
-    print (DBdriver.query_delete_hostname%h)
-    DBdriver.con.execute(DBdriver.query_delete_hostname%h)
+    print (DBdriver.query_delete_hostname%host)
+    DBdriver.con.execute(DBdriver.query_delete_hostname%host)
 
 
 
