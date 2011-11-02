@@ -51,6 +51,8 @@ user: slurm
 '''
 
 import sys
+import os
+
 import Thiao
 
 if __name__ == '__main__':
@@ -59,6 +61,11 @@ if __name__ == '__main__':
         sys.stderr = sys.stdout
         pass
     except: pass
+    
+    if not "ONE_AUTH" in os.environ:
+        print ("trying to set ONE_AUTH")
+        os.environ["ONE_AUTH"] = Thiao.ConfigLoader.oneAuth
+        
     #hosts = "fg10,fg[0-9],vm[2-12]"
     hosts = sys.argv[1]
     hlist = Thiao.extend_host_list(hosts)
