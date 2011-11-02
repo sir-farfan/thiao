@@ -11,17 +11,17 @@ Installing:
 -----------
 
 Note: this should work as long as you have a *WORKING* SLURM and OpenNebula
-installation.
+installation::
 
-sudo mkdir /opt/thiao
-sudo chmod 777 /opt/thiao
-cd /opt/thiao
-git clone git://github.com/scarmiglione/thiao.git .
-chmod 666 thiao.db
-./bin/Setup
+  sudo mkdir /opt/thiao
+  sudo chmod 777 /opt/thiao
+  cd /opt/thiao
+  git clone git://github.com/scarmiglione/thiao.git .
+  chmod 666 thiao.db
+  ./bin/Setup
 
-Set the *OneAuth* variable in *thiao.cfg* and make sure the user slurm can read it
-(it's needed if you want SLURM to call the tclean.py script every time a job
+Set the *OneAuth* variable in *thiao.cfg* and make sure the user slurm can read
+it (it's needed if you want SLURM to call the tclean.py script every time a job
 finishes it's execution).
 
 
