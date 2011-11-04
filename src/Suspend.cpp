@@ -26,33 +26,20 @@ slurm scontrol update nodename=fg10 state=[idle|down]
 
 #include <stdlib.h>
 #include <sqlite3.h>
-#include <iostream>
+#include "thiao.h"
+
 
 using namespace std;
-
-// lo llaman una vez por cada fila de resultados!!
-static int suspend(void *NotUsed, int argc, char **argv, char **azColName){
-   int i;
-   string cmd = "onevm -v shutdown ";
-
-   if (argv[0]){
-       cmd += argv[0];
-       cout << cmd << endl;
-       system( cmd.c_str() );
-       //popen(cmd.c_str(), "r");
-   }
-
-   return 0;
-}
 
 
 
 int main(int argc, char ** argv){
+    list <string> hlist;
     sqlite3 *db;
     int rc;
     char *errmsg = NULL;
-    string oneid_from_hostname = "select onevm_id from ps_mode where hostname='";
-    string delete_hostname = "delete from ps_mode where hostname='"; //%s'"
+    const string oneid_from_hostname = "select onevm_id from ps_mode where hostname='";
+    const string delete_hostname = "delete from ps_mode where hostname='"; //%s'"
 
     //arguments validation
     if (argc != 2){
@@ -60,6 +47,7 @@ int main(int argc, char ** argv){
         return 1;
     }
     putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
+    hlist = extend_host_list(argv[1]);
 
     //openning db
     rc = sqlite3_open("/opt/thiao/thiao.db", &db);
@@ -70,15 +58,22 @@ int main(int argc, char ** argv){
     }
     rc = sqlite3_exec(db, "PRAGMA journal_mode =  OFF", NULL, 0, &errmsg);
 
-    //retrieving the ids of the VMs and shutting them down
-    oneid_from_hostname += argv[1] + string("'");
-    cout << oneid_from_hostname << endl;
-    rc = sqlite3_exec(db, oneid_from_hostname.c_str(), suspend, 0, &errmsg); //where hostname = '%s'")
+    //iterating through the hosts to shutdown
+    while ( ! hlist.empty() ){
+        cout << hlist.back() << " ";
 
-    //cleaning the register from the database
-    delete_hostname += argv[1] + string("'");
-    cout << delete_hostname << endl;
-    rc = sqlite3_exec(db, delete_hostname.c_str(), NULL, 0, &errmsg);
+        //retrieving the ids of the VMs and shutting them down
+        string exec = oneid_from_hostname + hlist.back() + "'";
+        cout << exec << endl;
+        rc = sqlite3_exec(db, exec.c_str(), suspend, 0, &errmsg); //where hostname = '%s'")
+
+        //cleaning the register from the database
+        string query = delete_hostname + hlist.back() + "'";
+        cout << query << endl;
+        rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg);
+
+        hlist.pop_back(); //drop the current host
+    }
 
     return 0;
 
