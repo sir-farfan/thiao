@@ -24,21 +24,21 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 slurm scontrol update nodename=fg10 state=[idle|down]
 */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <sqlite3.h>
-#include <iostream>
+#include <stdlib.h>
 #include <string.h>
+#include "thiao.h"
 
 using namespace std;
 
 int main(int argc, char ** argv){
     sqlite3 *db;
+    list <string> hlist;
     int rc;
     char *errmsg = NULL;
     char onemsg[10], oneid[10];
-    string query = "insert into ps_mode (hostname, onevm_id) values ( '"; //%s', %d );
-    string cmd = "onevm -v create ";
+    const string register_hostname_oneid = "insert into ps_mode (hostname, onevm_id) values ( '"; //%s', %d );
+    const string cmd = "onevm -v create ";
 
     //argument validation
     if (argc != 2){
@@ -46,6 +46,7 @@ int main(int argc, char ** argv){
         return 1;
     }
     putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
+    hlist = extend_host_list(argv[1]);
 
     //db setup
     rc = sqlite3_open("/opt/thiao/thiao.db", &db);
@@ -56,23 +57,26 @@ int main(int argc, char ** argv){
     }
     rc = sqlite3_exec(db, "PRAGMA journal_mode =  OFF", NULL, 0, &errmsg);
 
-    //create the VM
-    cmd += "/opt/thiao/examples/" + string("/");
-    cmd += argv[1] + string(".one");
+    // iterating over the list of hosts to create
+    while ( ! hlist.empty() ){
+        //create the VM
+        string exec = cmd + "/opt/thiao/examples/" + string("/");
+        exec += hlist.back() + ".one";
 
-    //FILE *f = popen("cat /tmp/o", "r");
-    FILE *f = popen(cmd.c_str(), "r");
-    fscanf(f, "%s %s", onemsg, oneid); //ID: 40
-    cout << onemsg << " " << oneid << endl;
-    if ( strcmp(onemsg, "ID:") ){
-        cout << "error trying to create the VM," << endl;
-        return 0;
+        //FILE *f = popen("cat /tmp/o", "r");
+        FILE *f = popen(exec.c_str(), "r");
+        fscanf(f, "%s %s", onemsg, oneid); //ID: 40
+        cout << onemsg << " " << oneid << endl;
+        if ( strcmp(onemsg, "ID:") ){
+            cout << "error trying to create the VM," << endl;
+            return 0;
+        }
+
+        //register hostname and OpenNebula id
+        string query = register_hostname_oneid + hlist.back() + string("', ") + oneid + string(")");
+        cout << query << endl;
+        rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
     }
-
-    //register hostname and OpenNebula id
-    query += argv[1] + string("', ") + oneid + string(")");
-    cout << query << endl;
-    rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
     return 0;
 
 }
