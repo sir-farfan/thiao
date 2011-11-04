@@ -24,6 +24,7 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 slurm scontrol update nodename=fg10 state=[idle|down]
 */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <sqlite3.h>
 #include <iostream>
@@ -44,6 +45,7 @@ int main(int argc, char ** argv){
         cout << "Must receive only the host name as parameter" << endl;
         return 1;
     }
+    putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
 
     //db setup
     rc = sqlite3_open("/opt/thiao/thiao.db", &db);
