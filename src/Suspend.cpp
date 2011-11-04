@@ -59,6 +59,7 @@ int main(int argc, char ** argv){
         cout << "Must receive only the host name as parameter" << endl;
         return 1;
     }
+    putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
 
     //openning db
     rc = sqlite3_open("/opt/thiao/thiao.db", &db);
