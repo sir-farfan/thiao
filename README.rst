@@ -43,7 +43,7 @@ virtual machines**, this can give a fine grained control of how much load each
 of your physical nodes will take. For instance, you can jump from n to n+1
 VMs running in each node and then back depending on your queue(s).
 
-First, install thiao, then you just need to set the apropriate Suspend and
+First, install Thiao, then you just need to set the appropriate Suspend and
 Resume programs in your *slurm.conf* like this::
 
   SuspendProgram=/opt/thiao/bin/Suspend                                           
@@ -63,14 +63,14 @@ directory), you can launch them all like this::
   /opt/thiao/bin/Resume fg[0-3]
 
 After SuspendTime seconds of idle time (no jobs in the queue?) SLURM should
-bring down the hosts automatically runnig SuspendProgram as the SlurmUser.
+bring down the hosts automatically running SuspendProgram as the SlurmUser.
 
 
 tsub mode:
 -----------
 
 **First phase**: use tsub.py in the bin directory to submit a job, it is a
-wrapper programm that does the following:
+wrapper program that does the following:
 
 #. Submit the job received as parameter using sbatch.
 #. Retrieve the job id.
@@ -78,7 +78,7 @@ wrapper programm that does the following:
 #. Launch as many VMs as nodes required.
 
 The VMs will then be contextualized, connect to the slurmctld daemon and
-execute the job submited.
+execute the job submitted.
 
 **Second phase**: you should have set tclean as the epilog program for SLURM
 like this::
