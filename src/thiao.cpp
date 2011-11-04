@@ -1,4 +1,7 @@
 /*
+thiao.cpp - a static library with common functions and variables for the rest
+    of the project.
+
 --------------------------------------------------------------------------------
 
 Copyright (C) 2011 Ismael Farfán. All rights reserved.
