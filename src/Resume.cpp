@@ -76,6 +76,8 @@ int main(int argc, char ** argv){
         string query = register_hostname_oneid + hlist.back() + string("', ") + oneid + string(")");
         cout << query << endl;
         rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
+
+        hlist.pop_back();
     }
     return 0;
 
