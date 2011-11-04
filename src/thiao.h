@@ -25,6 +25,23 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include <iostream>
 
+
+// configuration
+const std::string vm_script_dir = "/opt/thiao/examples/";
+const char one_auth[] = "ONE_AUTH=/var/lib/one/.one/one_auth";
+const char db_file[]  = "/opt/thiao/thiao.db";
+
+//---------do not edit below unless you know what you are doing----------------
+
+// database
+const std::string register_hostname_oneid = "insert into ps_mode (hostname, onevm_id) values ( '"; //%s', %d );
+const std::string oneid_from_hostname = "select onevm_id from ps_mode where hostname='";
+const std::string delete_hostname     = "delete from ps_mode where hostname='"; //%s'"
+
+// opennebula
+const std::string cmd = "onevm -v create ";
+
+
 /*
  * Given a list of hosts using the format of SLURM (ex: fg0,fg[7-9]),
  * return the extended list of hosts (ex: fg0,fg7,fg8,fg9)

@@ -38,19 +38,17 @@ int main(int argc, char ** argv){
     sqlite3 *db;
     int rc;
     char *errmsg = NULL;
-    const string oneid_from_hostname = "select onevm_id from ps_mode where hostname='";
-    const string delete_hostname = "delete from ps_mode where hostname='"; //%s'"
 
     //arguments validation
     if (argc != 2){
         cout << "Must receive only the host name as parameter" << endl;
         return 1;
     }
-    putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
+    putenv((char*)one_auth);
     hlist = extend_host_list(argv[1]);
 
     //openning db
-    rc = sqlite3_open("/opt/thiao/thiao.db", &db);
+    rc = sqlite3_open((char*)db_file, &db);
     if (rc){
         cout << "Couldn't open the database, aborting..." << endl;
         sqlite3_close(db);

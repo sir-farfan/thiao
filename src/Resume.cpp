@@ -37,19 +37,17 @@ int main(int argc, char ** argv){
     int rc;
     char *errmsg = NULL;
     char onemsg[10], oneid[10];
-    const string register_hostname_oneid = "insert into ps_mode (hostname, onevm_id) values ( '"; //%s', %d );
-    const string cmd = "onevm -v create ";
 
     //argument validation
     if (argc != 2){
         cout << "Must receive only the host name as parameter" << endl;
         return 1;
     }
-    putenv("ONE_AUTH=/var/lib/one/.one/one_auth");
+    putenv((char*)one_auth);
     hlist = extend_host_list(argv[1]);
 
     //db setup
-    rc = sqlite3_open("/opt/thiao/thiao.db", &db);
+    rc = sqlite3_open((char*)db_file, &db);
     if (rc){
         cout << "Couldn't open the database, aborting..." << endl;
         sqlite3_close(db);
@@ -60,7 +58,7 @@ int main(int argc, char ** argv){
     // iterating over the list of hosts to create
     while ( ! hlist.empty() ){
         //create the VM
-        string exec = cmd + "/opt/thiao/examples/" + string("/");
+        string exec = cmd + vm_script_dir + "/";
         exec += hlist.back() + ".one";
 
         //FILE *f = popen("cat /tmp/o", "r");
