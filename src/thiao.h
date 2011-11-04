@@ -1,5 +1,6 @@
 /*
- * thiao.h -
+thiao.h - header file for the common functions
+
 --------------------------------------------------------------------------------
 
 Copyright (C) 2011 Ismael Farfán. All rights reserved.
