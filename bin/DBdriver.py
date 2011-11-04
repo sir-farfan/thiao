@@ -36,6 +36,7 @@ import ConfigLoader
 print ("Opening db ", ConfigLoader.thiaoHome + "/" + ConfigLoader.dbFile)
 con = sqlite3.connect(ConfigLoader.thiaoHome + "/" + ConfigLoader.dbFile)
 con.isolation_level = None #auto-commit??
+con.execute("PRAGMA journal_mode =  OFF") 
 
 
 
