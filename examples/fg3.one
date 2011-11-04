@@ -1,0 +1,34 @@
+NAME	= "vmg-3"
+
+vCPU	= 3
+CPU		= 1
+MEMORY	= 3000
+OS	= [ ARCH = "x86_64"]
+
+DISK = [ 
+	source = "/N/project/opennebula/img/d-testing.img",
+	target = "hda",
+	driver = "qcow2",
+	readonly = "no",
+	clone = "yes" ]
+
+NIC = [ NETWORK = "fg1" ]
+NIC = [ NETWORK = "fg2" ]
+
+CONTEXT = [
+	gw         = "$NETWORK[GATEWAY, NAME=\"fg1\"]",
+	vmid	   = 3,
+	hn_base    = "fg",
+	ip_base    = "198.202.121.",
+	netmask    = "255.255.254.0",
+	ip2_base   = "192.168.11.",
+	dns        = "$NETWORK[DNS, NAME=\"fg1\"]",
+	files      = "/etc/slurm-llnl/slurm.conf /opt/thiao/examples/mio.sh /opt/thiao/examples/mictx.sh /opt/thiao/examples/hosts",
+	target     = "hdb"
+]
+
+FEATURES = [ ACPI="yes" ]
+
+GRAPHICS = [ 
+	type   = "vnc",
+	listen = "127.0.0.1"]
