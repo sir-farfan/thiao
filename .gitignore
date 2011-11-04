@@ -3,3 +3,5 @@ __pycache__
 #git update-index --no-assume-unchanged <file>
 
 *.pyc
+bin/Suspend
+bin/Resume
