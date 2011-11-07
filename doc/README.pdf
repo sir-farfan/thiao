@@ -72,9 +72,9 @@ endobj
  0
  0 ]
  /Rect [ 82.69291
- 399.5736
+ 336.5736
  532.5827
- 411.5736 ]
+ 348.5736 ]
  /Subtype /Link
  /Type /Annot >>
 endobj
@@ -87,9 +87,9 @@ endobj
  0
  0 ]
  /Rect [ 82.69291
- 368.5736
+ 305.5736
  532.5827
- 380.5736 ]
+ 317.5736 ]
  /Subtype /Link
  /Type /Annot >>
 endobj
@@ -126,12 +126,12 @@ endobj
 % 'R11': class PDFInfo 
 11 0 obj
 << /Author ()
- /CreationDate (D:20111104161403+08'00')
+ /CreationDate (D:20111107151655+08'00')
  /Creator (\(unspecified\))
  /Keywords ()
  /Producer (ReportLab PDF Library - www.reportlab.com)
  /Subject (\(unspecified\))
- /Title () >>
+ /Title (Thiao: fractional resource sharing experiment) >>
 endobj
 % 'R12': class PDFOutlines 
 12 0 obj
@@ -145,54 +145,54 @@ endobj
 << /Dest [ 6 0 R
  /XYZ
  62.69291
- 765.0236
+ 641.0236
  0 ]
  /Next 14 0 R
  /Parent 12 0 R
- /Title (Thiao: fractional resource sharing experiment) >>
+ /Title (Installing:) >>
 endobj
 % 'Outline.1': class OutlineEntryObject 
 14 0 obj
 << /Dest [ 6 0 R
  /XYZ
  62.69291
- 648.0236
+ 392.8236
  0 ]
  /Next 15 0 R
  /Parent 12 0 R
  /Prev 13 0 R
- /Title (Installing:) >>
+ /Title (Power saving mode) >>
 endobj
 % 'Outline.2': class OutlineEntryObject 
 15 0 obj
-<< /Dest [ 6 0 R
+<< /Dest [ 9 0 R
  /XYZ
  62.69291
- 399.8236
+ 765.0236
  0 ]
  /Next 16 0 R
  /Parent 12 0 R
  /Prev 14 0 R
- /Title (Power saving mode) >>
+ /Title (tsub mode:) >>
 endobj
 % 'Outline.3': class OutlineEntryObject 
 16 0 obj
 << /Dest [ 9 0 R
  /XYZ
  62.69291
- 765.0236
+ 504.8236
  0 ]
  /Next 17 0 R
  /Parent 12 0 R
  /Prev 15 0 R
- /Title (tsub mode:) >>
+ /Title (Troubleshooting) >>
 endobj
 % 'Outline.4': class OutlineEntryObject 
 17 0 obj
 << /Dest [ 9 0 R
  /XYZ
  62.69291
- 504.8236
+ 441.8236
  0 ]
  /Parent 12 0 R
  /Prev 16 0 R
@@ -209,43 +209,43 @@ endobj
 % 'R19': class PDFStream 
 19 0 obj
 % page stream
-<< /Length 4949 >>
+<< /Length 4953 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 62.69291 744.0236 cm
-q
-BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Thiao: fractional resource sharing experiment) Tj T* ET
-Q
-Q
-q
-1 0 0 1 62.69291 702.0236 cm
+1 0 0 1 62.69291 741.0236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL .08561 Tw (This is Thiao, an experiment for fractional resource management, the objective is to use some well trusted) Tj T* 0 Tw 2.081412 Tw (software to do job management, in this case SLURM, and also some cloud computing management) Tj T* 0 Tw (software to manage the virtual machine infrastructure which this time is OpenNebula.) Tj T* ET
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 17.10488 0 Td (Thiao: fractional resource sharing experiment) Tj T* -17.10488 0 Td ET
 Q
 Q
 q
-1 0 0 1 62.69291 660.0236 cm
+1 0 0 1 62.69291 695.0236 cm
+q
+BT 1 0 0 1 0 26 Tm .08561 Tw 12 TL /F1 10 Tf 0 0 0 rg (This is Thiao, an experiment for fractional resource management, the objective is to use some well trusted) Tj T* 0 Tw 2.081412 Tw (software to do job management, in this case SLURM, and also some cloud computing management) Tj T* 0 Tw (software to manage the virtual machine infrastructure which this time is OpenNebula.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 653.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 1.825777 Tw (With this you can allow the execution of many jobs at the same time in one node while letting them) Tj T* 0 Tw 1.194985 Tw (execute in their own isolated environment without realizing that there are other jobs in execution in the) Tj T* 0 Tw (same physical node.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 627.0236 cm
+1 0 0 1 62.69291 620.0236 cm
 q
 BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Installing:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 609.0236 cm
+1 0 0 1 62.69291 602.0236 cm
 q
-BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Note: this should work as long as you have a ) Tj /F2 10 Tf (working ) Tj /F1 10 Tf (SLURM and OpenNebula installation:) Tj T* ET
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Note: this ) Tj /F2 10 Tf (requires ) Tj /F1 10 Tf (a working SLURM and OpenNebula installation:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 443.8236 cm
+1 0 0 1 62.69291 436.8236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -259,38 +259,38 @@ n -6 -6 468.6898 156 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 134 Tm /F3 10 Tf 12 TL (#create the home directory for thiao) Tj T* (sudo mkdir /opt/thiao) Tj T* (sudo chmod 777 /opt/thiao) Tj T* (cd /opt/thiao) Tj T* (#retrieve the latest update, you can also download the zip file) Tj T* (git clone git://github.com/scarmiglione/thiao.git .) Tj T* (#make the database R/W for everyone) Tj T* (chmod 666 thiao.db) Tj T* (#compile the suspendo and resume programs) Tj T* (scons) Tj T* (#configure in case you plan to use the **tsub mode**) Tj T* (./bin/Setup) Tj T* ET
+BT 1 0 0 1 0 134 Tm /F3 10 Tf 12 TL (#create the home directory for thiao) Tj T* (sudo mkdir /opt/thiao) Tj T* (sudo chmod 777 /opt/thiao) Tj T* (cd /opt/thiao) Tj T* (#retrieve the latest update, you can also download the zip file) Tj T* (git clone git://github.com/scarmiglione/thiao.git .) Tj T* (#make the database R/W for everyone) Tj T* (chmod 666 thiao.db) Tj T* (#compile the suspend and resume programs) Tj T* (scons) Tj T* (#configure in case you plan to use the **tsub mode**) Tj T* (./bin/Setup) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 411.8236 cm
+1 0 0 1 62.69291 404.8236 cm
 q
 BT 1 0 0 1 0 14 Tm 1.473516 Tw 12 TL /F1 10 Tf 0 0 0 rg (Set the ) Tj /F2 10 Tf (OneAuth ) Tj /F1 10 Tf (variable in ) Tj /F2 10 Tf (thiao.cfg ) Tj /F1 10 Tf (and ) Tj /F2 10 Tf (src/thiao.h ) Tj /F1 10 Tf (and make sure the user slurm can read it \(it's) Tj T* 0 Tw (needed if you want SLURM to call the tclean.py script every time a job finishes it's execution\).) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 378.8236 cm
+1 0 0 1 62.69291 371.8236 cm
 q
 BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Power saving mode) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 336.8236 cm
+1 0 0 1 62.69291 329.8236 cm
 q
 BT 1 0 0 1 0 26 Tm .491751 Tw 12 TL /F1 10 Tf 0 0 0 rg (It is possible to use SLURM's power saving functions to ) Tj /F2 10 Tf (create and stop the virtual machines) Tj /F1 10 Tf (, this can) Tj T* 0 Tw .421567 Tw (give a fine grained control of how much load each of your physical nodes will take. For instance, you can) Tj T* 0 Tw (jump from n to n+1 VMs running in each node and then back depending on your queue\(s\).) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 306.8236 cm
+1 0 0 1 62.69291 299.8236 cm
 q
-BT 1 0 0 1 0 14 Tm 2.27186 Tw 12 TL /F1 10 Tf 0 0 0 rg (First, install thiao, then you just need to set the apropriate Suspend and Resume programs in your) Tj T* 0 Tw /F4 10 Tf (slurm.conf ) Tj /F1 10 Tf (like this:) Tj T* ET
+BT 1 0 0 1 0 14 Tm 1.716235 Tw 12 TL /F1 10 Tf 0 0 0 rg (First, install Thiao, then you just need to set the appropriate Suspend and Resume programs in your) Tj T* 0 Tw /F4 10 Tf (slurm.conf ) Tj /F1 10 Tf (like this:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 237.6236 cm
+1 0 0 1 62.69291 230.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -311,27 +311,27 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 217.6236 cm
+1 0 0 1 62.69291 210.6236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (After that restart the service.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 199.6236 cm
+1 0 0 1 62.69291 192.6236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Now just send a job to the queue using sbatch and let Thiao launch the virtual machines to run it.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 169.6236 cm
+1 0 0 1 62.69291 162.6236 cm
 q
 BT 1 0 0 1 0 14 Tm .400488 Tw 12 TL /F2 10 Tf 0 0 0 rg (The first time ) Tj /F1 10 Tf (it may be necesary to start the VMs ) Tj /F2 10 Tf (manually) Tj /F1 10 Tf (, lets say that you have the hosts fg0 trough) Tj T* 0 Tw (fg3 \(like the ones in the examples directory\), you can launch them all like this:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 136.4236 cm
+1 0 0 1 62.69291 129.4236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -352,10 +352,10 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 104.4236 cm
+1 0 0 1 62.69291 97.42362 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.438735 Tw (After SuspendTime seconds of idle time \(no jobs in the queue?\) SLURM should bring down the hosts) Tj T* 0 Tw (automatically runnig SuspendProgram as the SlurmUser.) Tj T* ET
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.438735 Tw (After SuspendTime seconds of idle time \(no jobs in the queue?\) SLURM should bring down the hosts) Tj T* 0 Tw (automatically running SuspendProgram as the SlurmUser.) Tj T* ET
 Q
 Q
  
@@ -364,7 +364,7 @@ endobj
 % 'R20': class PDFStream 
 20 0 obj
 % page stream
-<< /Length 5562 >>
+<< /Length 6062 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -376,7 +376,7 @@ Q
 q
 1 0 0 1 62.69291 714.0236 cm
 q
-BT 1 0 0 1 0 14 Tm 1.621567 Tw 12 TL /F2 10 Tf 0 0 0 rg (First phase) Tj /F1 10 Tf (: use tsub.py in the bin directory to submit a job, it is a wrapper programm that does the) Tj T* 0 Tw (following:) Tj T* ET
+BT 1 0 0 1 0 14 Tm 2.059988 Tw 12 TL /F2 10 Tf 0 0 0 rg (First phase) Tj /F1 10 Tf (: use tsub.py in the bin directory to submit a job, it is a wrapper program that does the) Tj T* 0 Tw (following:) Tj T* ET
 Q
 Q
 q
@@ -485,7 +485,7 @@ q
 1 0 0 1 62.69291 624.0236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The VMs will then be contextualized, connect to the slurmctld daemon and execute the job submited.) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The VMs will then be contextualized, connect to the slurmctld daemon and execute the job submitted.) Tj T* ET
 Q
 Q
 q
@@ -579,39 +579,52 @@ Q
 q
 1 0 0 1 62.69291 483.8236 cm
 q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Troubleshooting) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 453.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.053735 Tw (Both SLURM and OpenNebula are independent and so is the troubleshooting, if you are sure that both) Tj T* 0 Tw (are working correctly, check doc/NodeStatus for some hints that may help you.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 420.8236 cm
+q
 BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (End notes) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 465.8236 cm
+1 0 0 1 62.69291 402.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (Don't mix the modes.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 447.8236 cm
+1 0 0 1 62.69291 384.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Remember that this is an experimental scenario.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 429.8236 cm
+1 0 0 1 62.69291 366.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Take a look at doc/one-slurm.pdf for more information on the experiment.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 413.8236 cm
+1 0 0 1 62.69291 350.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (SLURM's power saving guide) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 398.8236 cm
+1 0 0 1 62.69291 335.8236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 BT 1 0 0 1 0 2 Tm  T* ET
@@ -627,14 +640,14 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 382.8236 cm
+1 0 0 1 62.69291 319.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (OpenNebula documentation:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 367.8236 cm
+1 0 0 1 62.69291 304.8236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 BT 1 0 0 1 0 2 Tm  T* ET
@@ -650,14 +663,14 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 337.8236 cm
+1 0 0 1 62.69291 274.8236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .273516 Tw (This software was tested with the environment described in the presentation that can be found in the /doc) Tj T* 0 Tw (directory which includes:) Tj T* ET
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.64561 Tw (This software was tested with the environment described in the presentation that can be found in the) Tj T* 0 Tw (/doc/one-slurm.pdf directory which includes:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 256.6236 cm
+1 0 0 1 62.69291 193.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -671,17 +684,17 @@ n -6 -6 468.6898 72 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 50 Tm /F3 10 Tf 12 TL (OpenNebula 2.2.1) Tj T* (SLURM 2.2.7) Tj T* (1 Debian/testing VM) Tj T* (2 RHEL6 vm hosts) Tj T* (1 Debian/testing server) Tj T* ET
+BT 1 0 0 1 0 50 Tm /F3 10 Tf 12 TL (OpenNebula 2.2.1) Tj T* (SLURM 2.2.7) Tj T* (1 Debian/testing guest VM \(clonable\)) Tj T* (2 RHEL6 vm hosts) Tj T* (1 Debian/testing server) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 236.6236 cm
+1 0 0 1 62.69291 173.6236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Take care.) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Copyright \(C\) 2011 Ismael Farf\341n. All rights reserved.) Tj T* ET
 Q
 Q
  
@@ -721,26 +734,26 @@ xref
 0000001736 00000 n
 0000002044 00000 n
 0000002203 00000 n
-0000002451 00000 n
-0000002576 00000 n
-0000002781 00000 n
-0000002967 00000 n
-0000003159 00000 n
-0000003344 00000 n
-0000003497 00000 n
-0000003612 00000 n
-0000008660 00000 n
-0000014325 00000 n
-0000014431 00000 n
-0000014508 00000 n
+0000002496 00000 n
+0000002621 00000 n
+0000002792 00000 n
+0000002984 00000 n
+0000003169 00000 n
+0000003359 00000 n
+0000003512 00000 n
+0000003627 00000 n
+0000008679 00000 n
+0000014844 00000 n
+0000014950 00000 n
+0000015027 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
- [(\350;!\361\322\371\317\371\216\010/\366\202>\265\317) (\350;!\361\322\371\317\371\216\010/\366\202>\265\317)] 
+ [(<'\344d\371\317\355\177v}n\311_\213\266\220) (<'\344d\371\317\355\177v}n\311_\213\266\220)] 
 
  /Info 11 0 R
  /Root 10 0 R
  /Size 24 >>
 startxref
-14555
+15074
 %%EOF

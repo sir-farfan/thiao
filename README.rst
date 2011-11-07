@@ -1,5 +1,5 @@
 Thiao: fractional resource sharing experiment
----------------------------------------------
+=============================================
 
 This is Thiao, an experiment for fractional resource management, the objective
 is to use some well trusted software to do job management, in this case SLURM,
@@ -90,6 +90,14 @@ When the job finishes its execution, the slurmctld will call tclean which will:
 #. Shutdown the virtual machines that where created for it.
 
 
+Troubleshooting
+---------------
+
+Both SLURM and OpenNebula are independent and so is the troubleshooting, if you
+are sure that both are working correctly, check doc/NodeStatus for some hints
+that may help you.
+
+
 End notes
 ---------
 
@@ -114,7 +122,4 @@ that can be found in the /doc/one-slurm.pdf directory which includes::
   2 RHEL6 vm hosts
   1 Debian/testing server
 
-Take care.
-
-
-
+Copyright (C) 2011 Ismael Farfán. All rights reserved.
