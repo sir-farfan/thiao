@@ -1,0 +1,717 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+% 'BasicFonts': class PDFDictionary 
+1 0 obj
+% The standard fonts dictionary
+<< /F1 2 0 R
+ /F2 3 0 R
+ /F3 4 0 R
+ /F4 5 0 R >>
+endobj
+% 'F1': class PDFType1Font 
+2 0 obj
+% Font Helvetica
+<< /BaseFont /Helvetica
+ /Encoding /WinAnsiEncoding
+ /Name /F1
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F2': class PDFType1Font 
+3 0 obj
+% Font Helvetica-Bold
+<< /BaseFont /Helvetica-Bold
+ /Encoding /WinAnsiEncoding
+ /Name /F2
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F3': class PDFType1Font 
+4 0 obj
+% Font Helvetica-Oblique
+<< /BaseFont /Helvetica-Oblique
+ /Encoding /WinAnsiEncoding
+ /Name /F3
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F4': class PDFType1Font 
+5 0 obj
+% Font Courier
+<< /BaseFont /Courier
+ /Encoding /WinAnsiEncoding
+ /Name /F4
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'Page1': class PDFPage 
+6 0 obj
+% Page dictionary
+<< /Contents 18 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 17 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'Annot.NUMBER1': class PDFDictionary 
+7 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://opennebula.org/documentation:archives:rel2.2:cong) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 82.69291
+ 496.5736
+ 532.5827
+ 508.5736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER2': class PDFDictionary 
+8 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://opennebula.org/documentation:archives:rel2.0:vm_guide) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 82.69291
+ 465.5736
+ 532.5827
+ 477.5736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER3': class PDFDictionary 
+9 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://opennebula.org/documentation:archives:rel2.0:template) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 82.69291
+ 434.5736
+ 354.5029
+ 446.5736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER4': class PDFDictionary 
+10 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://opennebula.org/documentation:rel3.0:vm_guide) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 82.69291
+ 422.5736
+ 319.4929
+ 434.5736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER5': class PDFDictionary 
+11 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://computing.llnl.gov/linux/slurm/power_save.html) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 82.69291
+ 391.5736
+ 532.5827
+ 403.5736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Page2': class PDFPage 
+12 0 obj
+% Page dictionary
+<< /Annots [ 7 0 R
+ 8 0 R
+ 9 0 R
+ 10 0 R
+ 11 0 R ]
+ /Contents 19 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 17 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'R13': class PDFCatalog 
+13 0 obj
+% Document Root
+<< /Outlines 15 0 R
+ /PageLabels 20 0 R
+ /PageMode /UseNone
+ /Pages 17 0 R
+ /Type /Catalog >>
+endobj
+% 'R14': class PDFInfo 
+14 0 obj
+<< /Author ()
+ /CreationDate (D:20111107150320+08'00')
+ /Creator (\(unspecified\))
+ /Keywords ()
+ /Producer (ReportLab PDF Library - www.reportlab.com)
+ /Subject (\(unspecified\))
+ /Title (VM satus meaning and troubleshuting) >>
+endobj
+% 'R15': class PDFOutlines 
+15 0 obj
+<< /Count 1
+ /First 16 0 R
+ /Last 16 0 R
+ /Type /Outlines >>
+endobj
+% 'Outline.0': class OutlineEntryObject 
+16 0 obj
+<< /Dest [ 12 0 R
+ /XYZ
+ 62.69291
+ 601.8236
+ 0 ]
+ /Parent 15 0 R
+ /Title (Additional resources) >>
+endobj
+% 'R17': class PDFPages 
+17 0 obj
+% page tree
+<< /Count 2
+ /Kids [ 6 0 R
+ 12 0 R ]
+ /Type /Pages >>
+endobj
+% 'R18': class PDFStream 
+18 0 obj
+% page stream
+<< /Length 6346 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 53.80488 0 Td (VM satus meaning and troubleshuting) Tj T* -53.80488 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 671.0236 cm
+q
+BT 1 0 0 1 0 50 Tm 1.070465 Tw 12 TL /F1 10 Tf 0 0 0 rg (It is to me a little of a mystery how SLURM decides how to mark each node when I execute ) Tj /F3 10 Tf (sinfo) Tj /F1 10 Tf (, this) Tj T* 0 Tw .692209 Tw (problem has bugged me enough to make me write this document in which I describe some of the states) Tj T* 0 Tw .328084 Tw (you may get into, what they mean and a way to move from that state to another. This is mainly because I) Tj T* 0 Tw 1.566457 Tw (haven't find a good documentation about power saving mode besides the link that you will find at the) Tj T* 0 Tw (bottom of this document.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 655.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (down* fg5) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 562.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 79.2 Tm  T* ET
+q
+1 0 0 1 20 65.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .85061 Tw (SLURM has never \(?\) seen this VMs or you manually issued the shutdown command, just start the) Tj T* 0 Tw (VMs manually, when it finishes booting it will connect to the server at will be put in idle state:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 32 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 448.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (/opt/thiao/bin/Resume fg5) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .48561 Tw (You may need to execute that command the very first time you install and enable Thiao's integration) Tj T* 0 Tw (for power saving mode.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 546.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (idle fg[0-1]) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 519.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 14 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .802093 Tw (The VMs are there doing nothing, ready to start executing a job at any moment. If it remains in this) Tj T* 0 Tw (state for more than SuspendTime seconds, the VM will be shut down \(see idle~\).) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 503.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (idle~ fg1) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 250.4236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 240.4 Tm  T* ET
+q
+1 0 0 1 20 226.4 cm
+q
+BT 1 0 0 1 0 14 Tm 2.083876 Tw 12 TL /F1 10 Tf 0 0 0 rg (The node is in ) Tj /F2 10 Tf (power saving mode ) Tj /F1 10 Tf (\(it was shut down because it was idle for too much time\),) Tj T* 0 Tw (SLURM will resume \(create\) the VM when a job arrives to the queue.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 202.4 cm
+q
+BT 1 0 0 1 0 14 Tm 1.927765 Tw 12 TL /F2 10 Tf 0 0 0 rg (If ) Tj /F1 10 Tf (there are jobs in the queue but the ) Tj /F2 10 Tf (VMs are not started ) Tj /F1 10 Tf (automatically you can force the VM) Tj T* 0 Tw (creation isuing the power_on command:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 169.2 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 448.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (scontrol update nodename=fg[0-1] state=power_up) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 20 113.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.091163 Tw (It seems that that happens because the VMs are still being pooled after being put in power saving) Tj T* 0 Tw .214269 Tw (\(efectibly shutdown by OpenNebula through Thiao!\), and at some point \(after ???? seconds\) they are) Tj T* 0 Tw 1.87561 Tw (marked as not responding \(though it doesn't seems to reflect in the information show in sinfo or) Tj T* 0 Tw (scontrol\), if that happens the only thing you get is something like this:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 32 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 448.6898 72 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 50 Tm /F4 10 Tf 12 TL (# grep responding /var/log/slurm-llnl/slurmctld.log | tail) Tj T* ([2011-11-07T11:34:35] error: Nodes fg[0-3,7] not responding) Tj T* ([2011-11-07T11:38:38] Node fg0 now responding) Tj T* ([2011-11-07T11:38:47] Node fg1 now responding) Tj T* ([2011-11-07T11:54:35] error: Nodes fg[2-3,7] not responding) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.184198 Tw (There must be some parameter to alter this behavior, if you know which is it send me an email to) Tj T* 0 Tw (update this document.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 234.4236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (idle* fg2) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 121.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 100.4 Tm  T* ET
+q
+1 0 0 1 20 98.4 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (fg2 was in ) Tj /F3 10 Tf (down* ) Tj /F1 10 Tf (state, got to this state after executing:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 65.2 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 448.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (scontrol update nodename=fg2 state=resume) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 20 33.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .206651 Tw (SLURM doesn't issue the resume command, only the VM was marked as not responding. I'ts needed) Tj T* 0 Tw (to start the VM manually to take it to the idle state:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 0 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 448.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (/opt/thiao/bin/Resume fg2) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 105.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (idle# fg[0-3]) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 90.02362 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The VMs where started manually asking slurm to power up the nodes:) Tj T* ET
+Q
+Q
+q
+Q
+Q
+ 
+endstream
+endobj
+% 'R19': class PDFStream 
+19 0 obj
+% page stream
+<< /Length 4062 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 704.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 47.2 Tm  T* ET
+q
+1 0 0 1 20 32 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 442.6898 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL (scontrol update nodename=fg[0-1] state=power_up) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.432209 Tw (After booting the nodes should be in idle or alloc status, if they are not, check the VM templates,) Tj T* 0 Tw (specially the contextualization section.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 688.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (alloc# fg[0-3]) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 613.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 62 Tm  T* ET
+q
+1 0 0 1 20 48 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.493798 Tw (The VM was assigned a job but is not responding, it will be put in this state if it was resumed to) Tj T* 0 Tw (execute a job... until it finishes booting and connects to the server.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.065777 Tw (If it remains in this state for too long, check that the VM template is correct, specially the phase of) Tj T* 0 Tw .459318 Tw (contextualization \(it happened to me that the IP and hostname of some VMs overlaped making them) Tj T* 0 Tw .962339 Tw (stay in this state indefinitly because the wrong VM was being resumed or the same one was being) Tj T* 0 Tw (resumed twise\).) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 580.8236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Additional resources) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 526.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 2.497318 Tw (Remember that there are some differences between OpenNebula 2 and 3 that can break your VM) Tj T* 0 Tw 2.237045 Tw (template files, also there may be some differences in the behavior of SLURM 2.2 and 2.3. For this) Tj T* 0 Tw .718651 Tw (OpenNebula 2.2 and SLURM 2.2 where used since those are the versions available in Debian/testing at) Tj T* 0 Tw (the moment of writing this software.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 510.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (OpenNebula's contextualization guide) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 495.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (http://opennebula.org/documentation:archives:rel2.2:cong) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 479.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (Managing virtual machines) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 464.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (http://opennebula.org/documentation:archives:rel2.0:vm_guide) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 448.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (VM template) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 421.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 14 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+BT 1 0 0 1 0 14 Tm 12 TL /F1 10 Tf 0 0 .501961 rg (http://opennebula.org/documentation:archives:rel2.0:template) Tj 0 0 0 rg  T* 0 0 .501961 rg (http://opennebula.org/documentation:rel3.0:vm_guide) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 405.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL (SLURM's power saving guide) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 390.8236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (https://computing.llnl.gov/linux/slurm/power_save.html) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 372.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Copyright \(C\) 2011 Ismael Farf\341n. All rights reserved.) Tj T* ET
+Q
+Q
+ 
+endstream
+endobj
+% 'R20': class PDFPageLabels 
+20 0 obj
+% Document Root
+<< /Nums [ 0
+ 21 0 R
+ 1
+ 22 0 R ] >>
+endobj
+% 'R21': class PDFPageLabel 
+21 0 obj
+% None
+<< /S /D
+ /St 1 >>
+endobj
+% 'R22': class PDFPageLabel 
+22 0 obj
+% None
+<< /S /D
+ /St 2 >>
+endobj
+xref
+0 23
+0000000000 65535 f
+0000000113 00000 n
+0000000245 00000 n
+0000000410 00000 n
+0000000585 00000 n
+0000000766 00000 n
+0000000925 00000 n
+0000001218 00000 n
+0000001492 00000 n
+0000001770 00000 n
+0000002048 00000 n
+0000002318 00000 n
+0000002577 00000 n
+0000002912 00000 n
+0000003071 00000 n
+0000003354 00000 n
+0000003479 00000 n
+0000003629 00000 n
+0000003745 00000 n
+0000010190 00000 n
+0000014355 00000 n
+0000014461 00000 n
+0000014538 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
+ [(\327\012\344\373\336\213\346:\256\367\357\302\202,\)\350) (\327\012\344\373\336\213\346:\256\367\357\302\202,\)\350)] 
+
+ /Info 14 0 R
+ /Root 13 0 R
+ /Size 23 >>
+startxref
+14585
+%%EOF
