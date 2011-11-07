@@ -59,7 +59,7 @@ int main(int argc, char ** argv){
     while ( ! hlist.empty() ){
         //create the VM
         string exec = cmd + vm_script_dir + "/";
-        exec += hlist.back() + ".one";
+        exec += hlist.front() + ".one";
 
         //FILE *f = popen("cat /tmp/o", "r");
         FILE *f = popen(exec.c_str(), "r");
@@ -71,11 +71,11 @@ int main(int argc, char ** argv){
         }
 
         //register hostname and OpenNebula id
-        string query = register_hostname_oneid + hlist.back() + string("', ") + oneid + string(")");
+        string query = register_hostname_oneid + hlist.front() + string("', ") + oneid + string(")");
         cout << query << endl;
         rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
 
-        hlist.pop_back();
+        hlist.pop_front();
     }
     return 0;
 
