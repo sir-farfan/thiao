@@ -14,8 +14,7 @@ that there are other jobs in execution in the same physical node.
 Installing:
 -----------
 
-Note: this should work as long as you have a **working** SLURM and OpenNebula
-installation::
+Note: this **requires** a working SLURM and OpenNebula installation::
 
   #create the home directory for thiao
   sudo mkdir /opt/thiao
@@ -25,7 +24,7 @@ installation::
   git clone git://github.com/scarmiglione/thiao.git .
   #make the database R/W for everyone
   chmod 666 thiao.db
-  #compile the suspendo and resume programs
+  #compile the suspend and resume programs
   scons
   #configure in case you plan to use the **tsub mode**
   ./bin/Setup
@@ -107,11 +106,11 @@ OpenNebula documentation:
   http://opennebula.org/documentation:rel3.0
 
 This software was tested with the environment described in the presentation
-that can be found in the /doc directory which includes::
+that can be found in the /doc/one-slurm.pdf directory which includes::
 
   OpenNebula 2.2.1
   SLURM 2.2.7
-  1 Debian/testing VM
+  1 Debian/testing guest VM (clonable)
   2 RHEL6 vm hosts
   1 Debian/testing server
 
