@@ -174,7 +174,7 @@ endobj
 % 'R14': class PDFInfo 
 14 0 obj
 << /Author ()
- /CreationDate (D:20111107150320+08'00')
+ /CreationDate (D:20111107150845+08'00')
  /Creator (\(unspecified\))
  /Keywords ()
  /Producer (ReportLab PDF Library - www.reportlab.com)
@@ -209,7 +209,7 @@ endobj
 % 'R18': class PDFStream 
 18 0 obj
 % page stream
-<< /Length 6346 >>
+<< /Length 6348 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -346,7 +346,7 @@ q
 1 0 0 1 20 113.2 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.091163 Tw (It seems that that happens because the VMs are still being pooled after being put in power saving) Tj T* 0 Tw .214269 Tw (\(efectibly shutdown by OpenNebula through Thiao!\), and at some point \(after ???? seconds\) they are) Tj T* 0 Tw 1.87561 Tw (marked as not responding \(though it doesn't seems to reflect in the information show in sinfo or) Tj T* 0 Tw (scontrol\), if that happens the only thing you get is something like this:) Tj T* ET
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.091163 Tw (It seems that that happens because the VMs are still being pooled after being put in power saving) Tj T* 0 Tw .957674 Tw (\(effectively shutdown by OpenNebula through Thiao!\), and at some point \(after ???? seconds\) they) Tj T* 0 Tw .751751 Tw (are marked as not responding \(though it doesn't seems to reflect in the information show in sinfo or) Tj T* 0 Tw (scontrol\), if that happens the only thing you get is something like this:) Tj T* ET
 Q
 Q
 q
@@ -374,7 +374,7 @@ q
 1 0 0 1 20 0 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.184198 Tw (There must be some parameter to alter this behavior, if you know which is it send me an email to) Tj T* 0 Tw (update this document.) Tj T* ET
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .891567 Tw (There must be some parameter to alter this behaviour, if you know which is it send me an email to) Tj T* 0 Tw (update this document.) Tj T* ET
 Q
 Q
 q
@@ -478,7 +478,7 @@ endobj
 % 'R19': class PDFStream 
 19 0 obj
 % page stream
-<< /Length 4062 >>
+<< /Length 4064 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -540,7 +540,7 @@ q
 1 0 0 1 20 0 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.065777 Tw (If it remains in this state for too long, check that the VM template is correct, specially the phase of) Tj T* 0 Tw .459318 Tw (contextualization \(it happened to me that the IP and hostname of some VMs overlaped making them) Tj T* 0 Tw .962339 Tw (stay in this state indefinitly because the wrong VM was being resumed or the same one was being) Tj T* 0 Tw (resumed twise\).) Tj T* ET
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 1.065777 Tw (If it remains in this state for too long, check that the VM template is correct, specially the phase of) Tj T* 0 Tw .088651 Tw (contextualization \(it happened to me that the IP and hostname of some VMs overlapped making them) Tj T* 0 Tw .63528 Tw (stay in this state indefinitely because the wrong VM was being resumed or the same one was being) Tj T* 0 Tw (resumed twice\).) Tj T* ET
 Q
 Q
 q
@@ -556,7 +556,7 @@ q
 1 0 0 1 62.69291 526.8236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 2.497318 Tw (Remember that there are some differences between OpenNebula 2 and 3 that can break your VM) Tj T* 0 Tw 2.237045 Tw (template files, also there may be some differences in the behavior of SLURM 2.2 and 2.3. For this) Tj T* 0 Tw .718651 Tw (OpenNebula 2.2 and SLURM 2.2 where used since those are the versions available in Debian/testing at) Tj T* 0 Tw (the moment of writing this software.) Tj T* ET
+BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL 2.497318 Tw (Remember that there are some differences between OpenNebula 2 and 3 that can break your VM) Tj T* 0 Tw 1.909986 Tw (template files, also there may be some differences in the behaviour of SLURM 2.2 and 2.3. For this) Tj T* 0 Tw .718651 Tw (OpenNebula 2.2 and SLURM 2.2 where used since those are the versions available in Debian/testing at) Tj T* 0 Tw (the moment of writing this software.) Tj T* ET
 Q
 Q
 q
@@ -700,18 +700,18 @@ xref
 0000003479 00000 n
 0000003629 00000 n
 0000003745 00000 n
-0000010190 00000 n
-0000014355 00000 n
-0000014461 00000 n
-0000014538 00000 n
+0000010192 00000 n
+0000014359 00000 n
+0000014465 00000 n
+0000014542 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
- [(\327\012\344\373\336\213\346:\256\367\357\302\202,\)\350) (\327\012\344\373\336\213\346:\256\367\357\302\202,\)\350)] 
+ [(\350\005\227\307#\252B\312c\360\204f\036\314\325w) (\350\005\227\307#\252B\312c\360\204f\036\314\325w)] 
 
  /Info 14 0 R
  /Root 13 0 R
  /Size 23 >>
 startxref
-14585
+14589
 %%EOF

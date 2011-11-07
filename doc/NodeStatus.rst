@@ -34,7 +34,7 @@ idle~ fg1
     scontrol update nodename=fg[0-1] state=power_up
 
   It seems that that happens because the VMs are still being pooled after being
-  put in power saving (efectibly shutdown by OpenNebula through Thiao!), and
+  put in power saving (effectively shutdown by OpenNebula through Thiao!), and
   at some point (after ???? seconds) they are marked as not responding (though
   it doesn't seems to reflect in the information show in sinfo or scontrol), if
   that happens the only thing you get is something like this::
@@ -45,7 +45,7 @@ idle~ fg1
     [2011-11-07T11:38:47] Node fg1 now responding
     [2011-11-07T11:54:35] error: Nodes fg[2-3,7] not responding
 
-  There must be some parameter to alter this behavior, if you know which is it
+  There must be some parameter to alter this behaviour, if you know which is it
   send me an email to update this document.
 
 idle* fg2
@@ -74,9 +74,9 @@ alloc# fg[0-3]
 
   If it remains in this state for too long, check that the VM template is
   correct, specially the phase of contextualization (it happened to me that
-  the IP and hostname of some VMs overlaped making them stay in this state
-  indefinitly because the wrong VM was being resumed or the same one was being
-  resumed twise).
+  the IP and hostname of some VMs overlapped making them stay in this state
+  indefinitely because the wrong VM was being resumed or the same one was being
+  resumed twice).
 
 
 Additional resources
@@ -84,7 +84,7 @@ Additional resources
 
 Remember that there are some differences between OpenNebula 2 and 3 that can
 break your VM template files, also there may be some differences in the
-behavior of SLURM 2.2 and 2.3. For this OpenNebula 2.2 and SLURM 2.2 where
+behaviour of SLURM 2.2 and 2.3. For this OpenNebula 2.2 and SLURM 2.2 where
 used since those are the versions available in Debian/testing at the moment
 of writing this software.
 
