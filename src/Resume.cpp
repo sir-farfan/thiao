@@ -31,6 +31,13 @@ slurm scontrol update nodename=fg10 state=[idle|down]
 
 using namespace std;
 
+void usage(){
+    cout << "Creates a virtual machine based on its hostname and registers its ID" << endl;
+    cout << "    Resume hostname[,hostname]" << endl;
+    cout << "ex: to start fg0,fg3,fg4 and fg5:" << endl;
+    cout << "    Resume fg0,fg[3-5]" << endl;
+}
+
 int main(int argc, char ** argv){
     sqlite3 *db;
     list <string> hlist;
@@ -41,6 +48,7 @@ int main(int argc, char ** argv){
     //argument validation
     if (argc != 2){
         cout << "Must receive only the host name as parameter" << endl;
+        usage();
         return 1;
     }
     putenv((char*)one_auth);
