@@ -33,28 +33,45 @@ using namespace std;
 
 void usage(){
     cout << "Creates a virtual machine based on its hostname and registers its ID" << endl;
-    cout << "    Resume hostname[,hostname]" << endl;
+    cout << "    Resume hostname[,hostname] [-f|--force]" << endl;
+    cout << "    -f, --force  Will start a VM even if there is already one registed" << endl;
+    cout << "                 under the same hostname" << endl;
     cout << "ex: to start fg0,fg3,fg4 and fg5:" << endl;
     cout << "    Resume fg0,fg[3-5]" << endl;
 }
 
 int main(int argc, char ** argv){
     sqlite3 *db;
-    list <string> hlist;
+    list <string> hlist, running_vms;
     int rc;
     char *errmsg = NULL;
     char onemsg[10], oneid[10];
+    bool force_vm_creation = false;
 
-    //argument validation
-    if (argc != 2){
-        cout << "Must receive only the host name as parameter" << endl;
+    //--------argument validation-------
+    if (argc < 2 || argc > 3){
         usage();
         return 1;
     }
-    putenv((char*)one_auth);
-    hlist = extend_host_list(argv[1]);
 
-    //db setup
+    if (argc == 3){
+        if ( argv[1] == string("-f") || argv[1] == string("--force") ){
+            force_vm_creation = true;
+            hlist = extend_host_list(argv[2]);
+            cout << "forcing 1" << endl;
+        } else if ( argv[2] == string("-f") || argv[2] == string("--force") ) {
+            force_vm_creation = true;
+            hlist = extend_host_list(argv[1]);
+            cout << "forcing 2" << endl;
+        } else {
+            usage();
+            return 1;
+        }
+    } else
+        hlist = extend_host_list(argv[1]);
+    putenv((char*)one_auth);
+
+    //--------db setup------------
     rc = sqlite3_open((char*)db_file, &db);
     if (rc){
         cout << "Couldn't open the database, aborting..." << endl;
@@ -63,25 +80,38 @@ int main(int argc, char ** argv){
     }
     rc = sqlite3_exec(db, "PRAGMA journal_mode =  OFF", NULL, 0, &errmsg);
 
-    // iterating over the list of hosts to create
+    //---------iterating over the list of hosts to create----------
     while ( ! hlist.empty() ){
-        //create the VM
-        string exec = cmd + vm_script_dir + "/";
-        exec += hlist.front() + ".one";
+        //check if this VM was created before
+        while ( !running_vms.empty() ) running_vms.pop_back();
+        rc = sqlite3_exec(db,
+                (oneid_from_hostname + hlist.front() + "'").c_str(),
+                make_list_callback, (void*)&running_vms, &errmsg);
 
-        //FILE *f = popen("cat /tmp/o", "r");
-        FILE *f = popen(exec.c_str(), "r");
-        fscanf(f, "%s %s", onemsg, oneid); //ID: 40
-        cout << onemsg << " " << oneid << endl;
-        if ( strcmp(onemsg, "ID:") ){
-            cout << "error trying to create the VM," << endl;
-            return 0;
+        if ( running_vms.empty() || force_vm_creation ){
+            if ( !running_vms.empty() && force_vm_creation )
+                cout << "forcing the creation of " << hlist.front() << endl;
+            //create the VM
+            string exec = cmd + vm_script_dir + "/";
+            exec += hlist.front() + ".one";
+
+            //FILE *f = popen("cat /tmp/o", "r");
+            FILE *f = popen(exec.c_str(), "r");
+            fscanf(f, "%s %s", onemsg, oneid); //ID: 40
+            cout << onemsg << " " << oneid << endl;
+            if ( strcmp(onemsg, "ID:") ){
+                cout << "error trying to create the VM," << endl;
+                return 0;
+            }
+
+            //register hostname and OpenNebula id
+            string query = register_hostname_oneid + hlist.front() + string("', ") + oneid + string(")");
+            cout << query << endl;
+            rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
+        } else {
+            cout << "This VM seems to exists: " << hlist.front() << " NOT starting it again, ";
+            cout << "you can change this with --force." << endl;
         }
-
-        //register hostname and OpenNebula id
-        string query = register_hostname_oneid + hlist.front() + string("', ") + oneid + string(")");
-        cout << query << endl;
-        rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
 
         hlist.pop_front();
     }
