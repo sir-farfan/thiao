@@ -36,7 +36,6 @@ using namespace std;
  * @return: ??
  */
 int suspend(void *NotUsed, int argc, char **argv, char **azColName){
-   int i;
    string cmd = "onevm -v shutdown ";
    cout << "suspending " << endl;
 
@@ -55,45 +54,64 @@ int suspend(void *NotUsed, int argc, char **argv, char **azColName){
 
 /*
  * Given a list of hosts using the format of SLURM (ex: fg0,fg[7-9]),
- * return the extended list of hosts (ex: fg0,fg7,fg8,fg9)
+ * return the extended list of hosts (ex: fg0,fg7,fg8,fg9,fg[0-3,5])
  * @param hosts: list to extend
  * @return: extended list of hosts
  */
 list<string> extend_host_list(string hosts){
     list<string> hlist;
-    string h2, host;
-    int comma, from, to;
+    string host, from_str, to_str;
+    unsigned int current=0, from, to;
     char aux[30];
-    while( hosts.length() > 0 ){
-        //split by host name
-        comma = hosts.find_first_of(",");
-        if (comma > 0){ //multiple hostnames
-            h2 = hosts.substr(0, comma);
-            hosts = hosts.substr(comma + 1, hosts.size());
-//            cout << h2 << "   " << hosts << endl;
-        } else { //only one host... probably
-            h2 = hosts;
-            hosts = "";
-//            cout << h2 << "   " << hosts << endl;
+    while( hosts.length() > current ){
+        //get the next host name
+        host = from_str = to_str = "";
+        while (hosts.length() > current &&
+               hosts[current] != ',' && hosts[current] != '['){ // , separates hosts, [ indicates range or list
+            host += hosts[current];
+            current ++;
+        }
+        //lets see why it stopped
+        if (hosts.length() <= current){ //finished parsing
+            hlist.push_back(host);
+            break;
         }
 
-        //split list of hosts
-        comma = h2.find_first_of("[");
-        if ( comma > 0 ){ // list of hosts
-            host = h2.substr(0, comma);
-            from = atoi( h2.substr(comma+1, h2.find_first_of("-") ).c_str() );
-            to = atoi( h2.substr( h2.find_first_of("-")+1, h2.size() ).c_str() );
-//            cout << "from " << from << " to " << to << endl;
-            while (from <= to){
-//                cout << " while " ;
-                sprintf(aux, (host+"%d").c_str(), from);
-                hlist.push_back(aux);
-                from++;
-            }
-        } else { //only one host
-//            cout << " push only ";
-            hlist.push_back(h2);
+        if (hosts[current]==','){ //read a whole host name
+            hlist.push_back(host);
+            current ++;
         }
+        else
+        { //-----------got a range of hosts--------------
+            while ( hosts[current] != ']' ){
+                current++; // it was positioned over ,, [ or ], lets move it
+                from_str = to_str = "";
+                while ( isdigit( hosts[current] ) ){ //read the start of the range of hosts requested
+                    from_str += hosts[current];
+                    current ++;
+                }
+                // finished reading the first part
+                if ( hosts[current] == ',' || hosts[current] == ']' ){ //is in this form [5,7,9]
+                    to_str = from_str;
+                } else { //range [1-3]
+                    current ++; //it was over a -, lets move it
+                    while ( isdigit( hosts[current] ) ){ //read the end of the range of hosts requested
+                        to_str += hosts[current];
+                        current ++;
+                    } // it is over either , or ]
+                }
+                from = atoi( from_str.c_str() );
+                to = atoi( to_str.c_str() );
+                for (; from <= to; from++){
+                    sprintf(aux, (host+"%d").c_str(), from);
+                    hlist.push_back( aux );
+                }
+            }
+            current++; //it was over ], otherwise it wouldn't have finished
+            current++; //now is either over , or beyond the end of the string
+        }
+
+//        hlist.push_back(h2);
     }
     return hlist;
 }
