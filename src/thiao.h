@@ -36,6 +36,7 @@ const char db_file[]  = "/opt/thiao/thiao.db";
 
 // database
 const std::string register_hostname_oneid = "insert into ps_mode (hostname, onevm_id) values ( '"; //%s', %d );
+// must return only the ID because I don't do sanity check
 const std::string oneid_from_hostname = "select onevm_id from ps_mode where hostname='";
 const std::string delete_hostname     = "delete from ps_mode where hostname='"; //%s'"
 
@@ -63,6 +64,18 @@ std::list<std::string> extend_host_list(std::string hosts);
  * @return: ??
  */
 int suspend(void *NotUsed, int argc, char **argv, char **azColName);
+
+
+/*
+ * For use with sqlite3_exec, builds a list of strings using the first column
+ * in the results
+ * @param ids: (empty) std::list<std::string> to store the results
+ * @param argc: number of columns
+ * @param argv: row
+ * @param azColName: name of the columns retrieved
+ * @return: the return is in ids, the list of results
+ */
+int make_list_callback(void *ids, int argc, char **argv, char **azColName);
 
 
 #endif /* THIAO_H_ */

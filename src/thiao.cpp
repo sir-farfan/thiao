@@ -99,3 +99,16 @@ list<string> extend_host_list(string hosts){
 }
 
 
+
+int make_list_callback(void *ids, int argc, char **argv, char **azColName){
+    if (ids == NULL){
+        cout << "warning: ids is NULL" << endl;
+        return 0; // return 1 to abort...
+    }
+    list<string> *idlist = (list<string> *) ids;
+    if (argv[0])
+        idlist->push_back(argv[0]);
+    return 0;
+}
+
+
