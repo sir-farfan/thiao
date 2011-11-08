@@ -58,11 +58,9 @@ int main(int argc, char ** argv){
         if ( argv[1] == string("-f") || argv[1] == string("--force") ){
             force_vm_creation = true;
             hlist = extend_host_list(argv[2]);
-            cout << "forcing 1" << endl;
         } else if ( argv[2] == string("-f") || argv[2] == string("--force") ) {
             force_vm_creation = true;
             hlist = extend_host_list(argv[1]);
-            cout << "forcing 2" << endl;
         } else {
             usage();
             return 1;
