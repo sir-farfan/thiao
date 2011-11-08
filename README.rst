@@ -25,7 +25,7 @@ Note: this **requires** a working SLURM and OpenNebula installation::
   #make the database R/W for everyone
   chmod 666 thiao.db
   #compile the suspend and resume programs
-  scons
+  scons -c && scons
   #configure in case you plan to use the **tsub mode**
   ./bin/Setup
 
