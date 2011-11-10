@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------- #
+# Copyright 2002-2011, OpenNebula Project Leads (OpenNebula.org)             #
+# Modified by Ismael Farfán for the Thiao project - 2011
+#                                                                            #
+# Licensed under the Apache License, Version 2.0 (the "License"); you may    #
+# not use this file except in compliance with the License. You may obtain    #
+# a copy of the License at                                                   #
+#                                                                            #
+# http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                            #
+# Unless required by applicable law or agreed to in writing, software        #
+# distributed under the License is distributed on an "AS IS" BASIS,          #
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   #
+# See the License for the specific language governing permissions and        #
+# limitations under the License.                                             #
+#--------------------------------------------------------------------------- #
+
+mount /mnt
+
+if [ -f /mnt/mictx.sh ]
+then
+  echo cargando el contexto
+  . /mnt/mictx.sh
+else
+  echo no hay contexto
+  exit -1
+fi
+
+
+echo $HOSTNAME > /etc/hostname
+hostname $HOSTNAME
+echo 127.0.0.1 $HOSTNAME >> /etc/hosts
+
+if [ -n "$IP_PUBLIC" ]; then
+	ifconfig eth0 $IP_PUBLIC
+fi
+
+if [ -n "$IP_LOCAL" ]; then
+    ifconfig eth1 $IP_LOCAL
+fi
+
+if [ -n "$NETMASK" ]; then
+	ifconfig eth0 netmask $NETMASK
+fi
+
+if [ -n "$DNS"  ]; then
+	echo nameserver $DNS > /etc/resolv.conf
+fi
+
+if [ -n "$GW"  ]; then
+	route add default gw $GW
+fi
+
+if [ -f /mnt/$ROOT_PUBKEY ]; then
+	mkdir -p /root/.ssh
+	cat /mnt/$ROOT_PUBKEY >> /root/.ssh/authorized_keys
+	chmod -R 600 /root/.ssh/
+fi
+
+if [ -n "$USERNAME" ]; then
+	useradd -s /bin/bash -m $USERNAME
+	if [ -f /mnt/$USER_PUBKEY ]; then
+		mkdir -p /home/$USERNAME/.ssh/
+		cat /mnt/$USER_PUBKEY >> /home/$USERNAME/.ssh/authorized_keys
+		chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh
+		chmod -R 600 /home/$USERNAME/.ssh/authorized_keys
+	fi
+fi
+
+
+if [ -f /mnt/mio.sh ]; then
+	bash /mnt/mio.sh
+fi
+
+
