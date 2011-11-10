@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 '''
+***This module is DEPRECATED, use the c++ version instead: /src/Suspend.cpp***
+
 hostSuspend.py - for use with SLURM as SuspendProgram, it will read the hostname
     from the parameters and attempt to shutdown the corresponding virtual machines
     
@@ -67,6 +69,7 @@ if __name__ == '__main__':
         os.environ["ONE_AUTH"] = Thiao.ConfigLoader.oneAuth
         
     #hosts = "fg10,fg[0-9],vm[2-12]"
+    print ("Warning: This module is DEPRECATED, use the c++ version instead: /src/Suspend.cpp")
     hosts = sys.argv[1]
     hlist = Thiao.extend_host_list(hosts)
     print ("shutting down the following hosts: ", hlist)
