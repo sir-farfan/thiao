@@ -22,7 +22,12 @@ env.Append(CPPFLAGS=banderas)
 env.Append(CFLAGS=banderas)
  
 
-#env.StaticLibrary( "bin/thiao", "src/thiao.cpp")
-env.Program( target="bin/Resume",  source=["src/Resume.cpp",  "src/thiao.cpp"],  LIBS="sqlite3" )
-env.Program( target="bin/Suspend", source=["src/Suspend.cpp", "src/thiao.cpp"],  LIBS="sqlite3" )
+env.StaticLibrary( "src/thiao.cpp" )
+env.StaticLibrary( "src/remote.cpp" )
+
+env.Program( target="bin/Resume",   source="src/Resume.cpp",     LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
+env.Program( target="bin/Suspend",  source="src/Suspend.cpp",    LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
+
+env.Program( target="bin/balancer", source=["src/balancer.cpp"], LIBS="remote", LIBPATH="./src/" )
+
 
