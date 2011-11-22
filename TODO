@@ -1,0 +1,25 @@
+Code improvements:
+------------------
+
+Use xmlrpc-c for creating and destroying the virtual machines instead of the
+execution of the program through a system call.
+*Resume.cpp
+*Suspend.cpp
+
+
+
+Missing functions:
+------------------
+
+The following functions and variables are necessary in order to make Thiao
+configurable, but not necessary for the local (current) testing mode:
+
+struct configuration{...}
+It could be a class too, a place to store the configuration parameters that
+currently are either hardcoded or as part of a .h file
+
+void config_parser(void):
+Should search for the configuration file thiao.cfg in /etc and /opt/thiao at
+and fill the struct/class configuration
+
+
