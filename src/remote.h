@@ -29,10 +29,16 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 using namespace std;
 
-class HostLoad{
+
+
+/*
+ * Useful information about a host
+ */
+class Host{
 public:
-    HostLoad(string h, float l);
-    HostLoad();
+    Host(string h, float l);
+    Host(string h);
+    Host();
 
     string host; //host name
     float load;  //CPU load
@@ -40,7 +46,21 @@ public:
 };
 
 
-list<class HostLoad> get_host_load(list<string> hosts);
+
+/*
+ * Check the CPU load of a set of hosts
+ * @param hosts: list of hosts to check the load
+ * @return: Host + load ordered by CPU loads
+ * TODO: declare hosts as const?
+ */
+list<class Host> get_host_load(list<string> hosts);
+
+
+/*
+ * Sends a RPC call to OpenNebula to retrieve the list of working hosts
+ * @param hosts: (empty) list in which to put the names of the hosts
+ */
+void fill_host_list(list<Host> hosts);
 
 
 
