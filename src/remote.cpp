@@ -25,6 +25,8 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <xmlrpc-c/client_simple.hpp>
 #include <xmlrpc-c/base.hpp>
+#include <tinyxml.h>
+
 #include "thiao.h"
 #include "remote.h"
 
@@ -95,7 +97,7 @@ list<class Host> get_host_load(list<string> hosts){
 
 void fill_host_list(list<Host> hosts){
     xmlrpc_c::clientSimple client;
-    xmlrpc_c::value result_rpc, first, second;
+    xmlrpc_c::value result_rpc;
     string const serverUrl = "http://localhost:2633/RPC2";
     string const service = "one.hostpool.info";
 
@@ -104,28 +106,28 @@ void fill_host_list(list<Host> hosts){
     client.call(serverUrl, service, "s", &result_rpc, "");
 
     if ( result_rpc.type() != 6 ){ // array
-        cout << "error?" << endl;
+        cout << "expected an array but got something else, aborting: " << result_rpc.type() << endl;
         return;
     }
-    cout << "converting to array" << endl;
+//    cout << "converting to array" << endl;
     xmlrpc_c::value_array result_array(result_rpc);
     vector<xmlrpc_c::value> const result_vector(result_array.vectorValueValue());
 
-    cout << "vector size: " << result_vector.size() << endl;
+//    cout << "vector size: " << result_vector.size() << endl;
     // the first result tell whether it was successful or not
-    first = static_cast<xmlrpc_c::value>(result_vector[0]);
-    xmlrpc_c::value_boolean status = static_cast<xmlrpc_c::value>(first);
+    xmlrpc_c::value_boolean status = static_cast<xmlrpc_c::value>(result_vector[0]);
 
     // the second is a string with something hopefully useful
-    second = static_cast<xmlrpc_c::value>(result_vector[1]);
-    xmlrpc_c::value_string msg = static_cast<xmlrpc_c::value_string>(second);
+    xmlrpc_c::value_string msg = static_cast<xmlrpc_c::value_string>(result_vector[1]);
 
 
     //---------- try to do something useful with the result ---------------
 
     if ( static_cast<bool>(status) ){
-        cout << "siii" << endl;
-        cout << static_cast<string>(msg) << endl;
+        string tmp = static_cast<string>(msg);
+        cout << tmp << endl;
+        TiXmlDocument info;
+        info.Parse(tmp.c_str(), NULL, TIXML_DEFAULT_ENCODING);
     } else {
         cout << "noo" << endl;
         cout << static_cast<string>(msg) << endl;
