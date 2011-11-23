@@ -43,37 +43,10 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "thiao.h"
 #include "remote.h"
+#include "Host.h"
 
 
 
-/*
- * Constructor with parameters
- */
-Host::Host(int id, string name, int state){
-    this->name = name;
-    this->id = id;
-    this->state = state;
-}
-
-/*
- * Only the name of the host
- */
-Host::Host(string h){
-//    Host(h, 0, 0);
-}
-
-/*
- * Default constructor
- */
-Host::Host(){
-    Host("");
-}
-
-
-
-void Host::get_load(void){
-    //TODO
-}
 
 
 /*
@@ -123,7 +96,7 @@ void fill_host_list(list<Host> *hosts){
 
 //TODO: put this in a try/catch block
     cout << "calling hostpool" << endl;
-    client.call(serverUrl, service, "s", &result_rpc, "");
+    client.call(serverUrl, service, "s", &result_rpc, "oneadmin:f283db8110a52874dae5c1d2143527245357cc9f");
 
     if ( result_rpc.type() != 6 ){ // array
         cout << "expected an array but got something else, aborting: " << result_rpc.type() << endl;

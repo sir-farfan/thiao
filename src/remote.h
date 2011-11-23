@@ -26,28 +26,13 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #define REMOTE_H_
 
 #include "thiao.h"
+#include "Host.h"
 
 using namespace std;
 
 
 
-/*
- * Useful information about a host
- */
-class Host{
-public:
-    Host(int id, string name, int state);
-    Host(string h);
-    Host(void);
 
-    void get_load(void);
-
-    string name; //host name
-    float load;  //CPU load
-    int id;
-    int state; // 2=on, 4=off
-    //TODO: retrieve memory too
-};
 
 
 
