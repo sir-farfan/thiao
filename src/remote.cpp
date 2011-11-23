@@ -47,47 +47,6 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-
-
-/*
- * Compare the load of 2 hosts
- * @param h1: host 1
- * @param h2: host 2
- * @return: true if the load of host 1 is lower than the load of host 2
- */
-bool compare_host_load(class Host h1, class Host h2){
-    return h1.load < h2.load;
-}
-
-
-
-/*
- * Check the CPU load of a set of hosts
- * @param hosts: list of hosts to check the load
- * @return: Host + load ordered by CPU loads
- * //TODO: declare hosts as const?
- */
-list<class Host> get_host_load(list<string> hosts){
-    list<class Host> hl;
-    Host load;
-    float min1, min5, min15;
-
-    while( !hosts.empty() ){
-        string cmd = "ssh oneadmin@" + hosts.front() + " cat /proc/loadavg";
-        cout << cmd << endl;
-        FILE *f = popen(cmd.c_str(), "r");
-        fscanf(f, "%f %f %f", &min1, &min5, &min15);
-//        load = Host(hosts.front(), min1);
-        hl.push_back(load);
-        hosts.pop_front();
-        fclose(f);
-    }
-    hl.sort(compare_host_load);
-    return hl;
-}
-
-
-
 void fill_host_list(list<Host> *hosts){
     xmlrpc_c::clientSimple client;
     xmlrpc_c::value result_rpc;
@@ -95,7 +54,7 @@ void fill_host_list(list<Host> *hosts){
     string const service = "one.hostpool.info";
 
 //TODO: put this in a try/catch block
-    cout << "calling hostpool" << endl;
+//    cout << "calling hostpool" << endl;
     client.call(serverUrl, service, "s", &result_rpc, "oneadmin:f283db8110a52874dae5c1d2143527245357cc9f");
 
     if ( result_rpc.type() != 6 ){ // array
