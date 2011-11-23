@@ -24,6 +24,7 @@ env.Append(CFLAGS=banderas)
 
 env.StaticLibrary( "src/thiao.cpp" )
 env.StaticLibrary( "src/remote.cpp" )
+env.StaticLibrary( "src/Host.cpp" )
 
 env.Program( target="bin/Resume",   source="src/Resume.cpp",     LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
 env.Program( target="bin/Suspend",  source="src/Suspend.cpp",    LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
@@ -38,6 +39,6 @@ xmlrpc = ["xmlrpc++",
 #		"xmlrpc_util"
 ]
 
-env.Program( target="bin/balancer", source=["src/balancer.cpp"], LIBS=xmlrpc+["remote", "tinyxml"], LIBPATH="./src/" )
+env.Program( target="bin/balancer", source=["src/balancer.cpp"], LIBS=xmlrpc+["remote", "tinyxml", "Host"], LIBPATH="./src/" )
 
 
