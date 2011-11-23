@@ -9,6 +9,7 @@
 #define HOST_H_
 
 #include<iostream>
+#include<tinyxml.h>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     Host(int id, string name, int state);
     Host(string h);
     Host(void);
+    Host(TiXmlNode *host_node);
 
     void get_load(void);
 
