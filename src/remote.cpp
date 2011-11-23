@@ -123,22 +123,8 @@ void fill_host_list(list<Host> *hosts){
         TiXmlNode *node = info.FirstChild("HOST_POOL")->FirstChild("HOST");
         //Iterate trough all the hosts
         while (node != NULL){
-            cout << "type: " << node->Type();
-            cout << " value: " << node->ValueStr() << endl;
-
-            TiXmlNode *child = node->FirstChild("ID");
-//            cout << "ID type: " << child->Type() << endl;
-//            cout << "ID child type: " << child->FirstChild()->Type() << endl;
-//            cout << "id child value: " << child->FirstChild()->Value() << endl;
-            int id = atoi( child->FirstChild()->Value() );
-            child = node->FirstChild("NAME");
-            string name = child->FirstChild()->ValueStr();
-            child = node->FirstChild("STATE");
-            int state = atoi( child->FirstChild()->Value() );
-
-            Host host(id, name, state);
+            Host host(node);
             hosts->push_back(host);
-
             node = node->NextSibling("HOST");
         }
 
