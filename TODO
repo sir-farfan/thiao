@@ -8,8 +8,8 @@ execution of the program through a system call.
 
 
 
-Missing functions:
-------------------
+Missing code:
+-------------
 
 The following functions and variables are necessary in order to make Thiao
 configurable, but not necessary for the local (current) testing mode:
@@ -21,5 +21,10 @@ currently are either hardcoded or as part of a .h file
 void config_parser(void):
 Should search for the configuration file thiao.cfg in /etc and /opt/thiao at
 and fill the struct/class configuration
+
+RPC information
+Add a configuration parameter for
+*server url
+*port
 
 
