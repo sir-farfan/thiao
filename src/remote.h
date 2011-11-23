@@ -36,12 +36,16 @@ using namespace std;
  */
 class Host{
 public:
-    Host(string h, float l);
+    Host(int id, string name, int state);
     Host(string h);
-    Host();
+    Host(void);
 
-    string host; //host name
+    void get_load(void);
+
+    string name; //host name
     float load;  //CPU load
+    int id;
+    int state; // 2=on, 4=off
     //TODO: retrieve memory too
 };
 
@@ -60,7 +64,7 @@ list<class Host> get_host_load(list<string> hosts);
  * Sends a RPC call to OpenNebula to retrieve the list of working hosts
  * @param hosts: (empty) list in which to put the names of the hosts
  */
-void fill_host_list(list<Host> hosts);
+void fill_host_list(list<Host> *hosts);
 
 
 
