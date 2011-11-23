@@ -28,6 +28,16 @@ env.StaticLibrary( "src/remote.cpp" )
 env.Program( target="bin/Resume",   source="src/Resume.cpp",     LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
 env.Program( target="bin/Suspend",  source="src/Suspend.cpp",    LIBS=["sqlite3", "thiao"], LIBPATH="./src/" )
 
-env.Program( target="bin/balancer", source=["src/balancer.cpp"], LIBS="remote", LIBPATH="./src/" )
+xmlrpc = ["xmlrpc++",
+#		"xmlrpc_packetsocket", 
+		"xmlrpc_client++",
+#		"xmlrpc_client", 
+#		"xmlrpc_parse", 
+#		"xmlrpc_xmltok", 
+#		"xmlrpc", 
+#		"xmlrpc_util"
+]
+
+env.Program( target="bin/balancer", source=["src/balancer.cpp"], LIBS=xmlrpc+["remote", "tinyxml"], LIBPATH="./src/" )
 
 
