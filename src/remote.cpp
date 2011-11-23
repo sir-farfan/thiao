@@ -20,7 +20,21 @@ You should have received a copy of the GNU General Public License along with
 Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------------------
-
+ *
+ * http://skew.org/xml/tutorial/
+ *
+ * elements and attributes... they define a hierarchy - a tree of data with a
+ * root, branches and leaves... an attribute is a granular, inherent property
+ * of an element.
+ *
+ * <HOST> /<HOST> - element = start-tag + end tag = container for its contents
+ * which can be more elements, data or both
+ *
+ * <element att=0> - attributes
+ * ONE doesn't use attributes
+ *
+ * <HOST_POOL> = root element = document element
+ *
  */
 
 #include <xmlrpc-c/client_simple.hpp>
@@ -35,25 +49,31 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 /*
  * Constructor with parameters
  */
-Host::Host(string h, float l){
-    this->host = h;
-    this->load = l;
+Host::Host(int id, string name, int state){
+    this->name = name;
+    this->id = id;
+    this->state = state;
 }
 
 /*
  * Only the name of the host
  */
 Host::Host(string h){
-    Host(h, 0);
+//    Host(h, 0, 0);
 }
 
 /*
  * Default constructor
  */
 Host::Host(){
-    Host("", 0);
+    Host("");
 }
 
+
+
+void Host::get_load(void){
+    //TODO
+}
 
 
 /*
@@ -84,7 +104,7 @@ list<class Host> get_host_load(list<string> hosts){
         cout << cmd << endl;
         FILE *f = popen(cmd.c_str(), "r");
         fscanf(f, "%f %f %f", &min1, &min5, &min15);
-        load = Host(hosts.front(), min1);
+//        load = Host(hosts.front(), min1);
         hl.push_back(load);
         hosts.pop_front();
         fclose(f);
@@ -95,7 +115,7 @@ list<class Host> get_host_load(list<string> hosts){
 
 
 
-void fill_host_list(list<Host> hosts){
+void fill_host_list(list<Host> *hosts){
     xmlrpc_c::clientSimple client;
     xmlrpc_c::value result_rpc;
     string const serverUrl = "http://localhost:2633/RPC2";
@@ -122,12 +142,33 @@ void fill_host_list(list<Host> hosts){
 
 
     //---------- try to do something useful with the result ---------------
-
     if ( static_cast<bool>(status) ){
         string tmp = static_cast<string>(msg);
-        cout << tmp << endl;
+//        cout << tmp << endl << endl;
         TiXmlDocument info;
-        info.Parse(tmp.c_str(), NULL, TIXML_DEFAULT_ENCODING);
+        info.Parse(tmp.c_str());
+        TiXmlNode *node = info.FirstChild("HOST_POOL")->FirstChild("HOST");
+        //Iterate trough all the hosts
+        while (node != NULL){
+            cout << "type: " << node->Type();
+            cout << " value: " << node->ValueStr() << endl;
+
+            TiXmlNode *child = node->FirstChild("ID");
+//            cout << "ID type: " << child->Type() << endl;
+//            cout << "ID child type: " << child->FirstChild()->Type() << endl;
+//            cout << "id child value: " << child->FirstChild()->Value() << endl;
+            int id = atoi( child->FirstChild()->Value() );
+            child = node->FirstChild("NAME");
+            string name = child->FirstChild()->ValueStr();
+            child = node->FirstChild("STATE");
+            int state = atoi( child->FirstChild()->Value() );
+
+            Host host(id, name, state);
+            hosts->push_back(host);
+
+            node = node->NextSibling("HOST");
+        }
+
     } else {
         cout << "noo" << endl;
         cout << static_cast<string>(msg) << endl;
