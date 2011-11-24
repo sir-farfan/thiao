@@ -17,7 +17,7 @@ Host::Host(int id, string name, int state){
 
 
 Host::Host(string name){
-//    Host(h, 0, 0);
+    Host(0, name, Host::NODE_OFF);
 }
 
 
@@ -72,13 +72,24 @@ float Host::retrieve_host_load(void){
 
 
 
-/*
- * Compare the load of 2 hosts
- * @param h1: host 1
- * @param h2: host 2
- * @return: true if the load of host 1 is lower than the load of host 2
- */
-bool compare_host_load(class Host h1, class Host h2){
-    return h1.load_m1 < h2.load_m1;
+bool Host::operator <(const Host &h2){
+    cout << this->load_m1 << " < " << h2.load_m1;
+    return this->load_m1 < h2.load_m1;
 }
+
+
+
+bool Host::operator <(const Host *h2){
+    cout << this->load_m1 << " < " << h2->load_m1;
+    return this->load_m1 < h2->load_m1;
+}
+
+
+
+bool compare_host_load(class Host *h1, class Host *h2){
+    cout << "comare: " << h1->load_m1 << " < " << h2->load_m1 << endl;
+    return h1->load_m1 < h2->load_m1;
+}
+
+
 
