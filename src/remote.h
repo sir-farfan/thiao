@@ -25,7 +25,8 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef REMOTE_H_
 #define REMOTE_H_
 
-#include "thiao.h"
+#include <vector>
+
 #include "Host.h"
 
 using namespace std;
@@ -34,7 +35,7 @@ using namespace std;
  * Sends a RPC call to OpenNebula to retrieve the list of working hosts
  * @param hosts: (empty) list in which to put the names of the hosts
  */
-void fill_host_list(list<Host> *hosts);
+void fill_host_list(vector<Host*> *hosts);
 
 
 
