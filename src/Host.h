@@ -50,6 +50,14 @@ public:
      */
     float retrieve_host_load(void);
 
+
+    /*
+     *
+     */
+    bool operator < (const Host &h2);
+    bool operator < (const Host *h2);
+
+
     string name; //host name
     float load_m1;  //Average CPU load in the last minute
     float load_m5;  //Average CPU load in the last 5 minutes
@@ -57,11 +65,23 @@ public:
     int id;
     int state; // 2=on, 4=off
     //TODO: retrieve memory too
+
+    enum NodeState{
+        NODE_OFF = 4,
+        NODE_ON  = 2,
+    };
 };
 
 
 
-bool compare_host_load(class Host h1, class Host h2);
+/*
+ * Compare the load of 2 hosts
+ * @param h1: host 1
+ * @param h2: host 2
+ * @return: true if the load of host 1 is lower than the load of host 2
+ */
+bool compare_host_load(class Host *h1, class Host *h2);
+
 
 
 #endif /* HOST_H_ */
