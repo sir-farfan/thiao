@@ -33,7 +33,10 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
+#include<list>
+
 #include "remote.h"
+#include "Host.h"
 
 using namespace std;
 
@@ -45,17 +48,33 @@ using namespace std;
 
 
 
-
-
 int main(int argc, char **argv){
-    list <class Host> load;
-    class Host hl;
+//TODO: learn to use iterators
+    vector<class Host*> hlist;
+    list<class Host*> sorted;
+    class Host *hl;
+    unsigned int i = 0;
 
-    fill_host_list(&load);
-    while( !load.empty() ){
-        cout << load.front().name << endl;
-        load.pop_front();
+    fill_host_list(&hlist);
+
+    while( i < hlist.size() ){
+        hl = hlist[i];
+        cout << hl->name << endl;
+        cout << "load: " << hl->retrieve_host_load() << endl;
+        sorted.push_back( hlist[i] );
+
+        i++;
     }
+
+    sorted.sort(compare_host_load);
+    for (i=0; i<hlist.size(); i++){
+        hlist[i] = sorted.front();
+        sorted.pop_front();
+        cout << hlist[i]->load_m1 << endl;
+    }
+
+
+
     return 0;
 }
 
