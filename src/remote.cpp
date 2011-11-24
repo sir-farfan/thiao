@@ -47,15 +47,14 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-void fill_host_list(list<Host> *hosts){
+void fill_host_list(vector<class Host*> *hosts){
     xmlrpc_c::clientSimple client;
     xmlrpc_c::value result_rpc;
-    string const serverUrl = "http://localhost:2633/RPC2";
     string const service = "one.hostpool.info";
 
 //TODO: put this in a try/catch block
 //    cout << "calling hostpool" << endl;
-    client.call(serverUrl, service, "s", &result_rpc, "oneadmin:f283db8110a52874dae5c1d2143527245357cc9f");
+    client.call(serverUrl, service, "s", &result_rpc, rpc_id.c_str());
 
     if ( result_rpc.type() != 6 ){ // array
         cout << "expected an array but got something else, aborting: " << result_rpc.type() << endl;
@@ -82,7 +81,7 @@ void fill_host_list(list<Host> *hosts){
         TiXmlNode *node = info.FirstChild("HOST_POOL")->FirstChild("HOST");
         //Iterate trough all the hosts
         while (node != NULL){
-            Host host(node);
+            Host *host = new Host(node);
             hosts->push_back(host);
             node = node->NextSibling("HOST");
         }
