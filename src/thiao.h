@@ -43,6 +43,10 @@ const std::string delete_hostname     = "delete from ps_mode where hostname='"; 
 // opennebula
 const std::string cmd = "onevm -v create ";
 
+//RPC
+std::string const serverUrl = "http://localhost:2633/RPC2";
+const std::string rpc_id = "oneadmin:f283db8110a52874dae5c1d2143527245357cc9f";
+
 
 /*
  * Given a list of hosts using the format of SLURM (ex: fg0,fg[7-9]),
