@@ -29,6 +29,7 @@ Host::Host(){
 
 
 Host::Host(TiXmlNode *host_node){
+    TiXmlNode *share;
     TiXmlNode *child;
 
 //    cout << "type: " << host_node->Type();
@@ -38,6 +39,8 @@ Host::Host(TiXmlNode *host_node){
         Host();
         return;
     }
+
+    share = host_node->FirstChild("HOST_SHARE");
 
     child = host_node->FirstChild("ID");
 //    cout << "ID type: " << child->Type() << endl;
@@ -50,12 +53,19 @@ Host::Host(TiXmlNode *host_node){
 
     child = host_node->FirstChild("STATE");
     this->state = atoi( child->FirstChild()->Value() );
-}
 
+    child = share->FirstChild("MAX_MEM");
+    this->max_mem = atoi( child->FirstChild()->Value() );
 
+    child = share->FirstChild("USED_MEM");
+    this->used_mem = atoi( child->FirstChild()->Value() );
 
-void Host::get_load(void){
-    //TODO
+    child = share->FirstChild("MAX_CPU");
+    this->max_cpu = atoi( child->FirstChild()->Value() );
+    this->cores = this->max_cpu / 100; // this seems to be the percentage per core
+
+    child = share->FirstChild("USED_CPU");
+    this->used_cpu = atoi( child->FirstChild()->Value() );
 }
 
 
@@ -67,7 +77,9 @@ float Host::retrieve_host_load(void){
     fscanf(f, "%f %f %f", &this->load_m1, &this->load_m5, &this->load_m15);
 //        load = Host(hosts.front(), min1);
     fclose(f);
-    return this->load_m1;
+    // this are the numbers that ONE gets... I think
+    used_cpu = load_m1 * 100;
+    return used_cpu;
 }
 
 
