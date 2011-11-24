@@ -43,10 +43,12 @@ public:
      */
     Host(TiXmlNode *host_node);
 
-    void get_load(void);
+
 
     /*
-     * Access to the node to get its load
+     * Access to the node to get its average load, the difference with what I
+     * get from ONE is that ONE waits some time to get this information, and
+     * with this is immediate
      */
     float retrieve_host_load(void);
 
@@ -62,9 +64,16 @@ public:
     float load_m1;  //Average CPU load in the last minute
     float load_m5;  //Average CPU load in the last 5 minutes
     float load_m15; //Average CPU load in the last 15 minutes
+    int cores;
+
+    // stuff from ONE
     int id;
     int state; // 2=on, 4=off
-    //TODO: retrieve memory too
+    int max_mem; // RAM
+    int used_mem;
+    int max_cpu;
+    int used_cpu; // this corresponds to one of the load_m* properties
+
 
     enum NodeState{
         NODE_OFF = 4,
