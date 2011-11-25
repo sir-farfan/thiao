@@ -1,11 +1,30 @@
 /*
- * Host.cpp
- *
- *  Created on: 22/11/2011
- *      Author: ismael
+Host.cpp - Class Host to store information about the physical nodes, this is the
+    implementation file.
+
+--------------------------------------------------------------------------------
+
+Copyright (C) 2011 Ismael Farfán. All rights reserved.
+
+This file is part of Thiao.
+
+Thiao is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+Thiao is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+Thiao.  If not, see <http://www.gnu.org/licenses/>.
+
+--------------------------------------------------------------------------------
  */
 
 #include "Host.h"
+
+
 
 
 Host::Host(int id, string name, int state){
@@ -70,7 +89,7 @@ Host::Host(TiXmlNode *host_node){
 
 
 
-float Host::retrieve_host_load(void){
+float Host::retrieveHostLoad(void){
     string cmd = "ssh oneadmin@" + this->name + " cat /proc/loadavg";
 //    cout << cmd << endl;
     FILE *f = popen(cmd.c_str(), "r");
@@ -85,23 +104,47 @@ float Host::retrieve_host_load(void){
 
 
 bool Host::operator <(const Host &h2){
-    cout << this->load_m1 << " < " << h2.load_m1;
-    return this->load_m1 < h2.load_m1;
+//    cout << "comare: " << this->getCpuUsagePercentage() << " < " << ((class Host)h2).getCpuUsagePercentage() << endl;
+//    cout << this->load_m1 << " < " << h2.load_m1;
+    return getCpuUsagePercentage() < ((class Host)h2).getCpuUsagePercentage();
 }
 
 
 
-bool Host::operator <(const Host *h2){
-    cout << this->load_m1 << " < " << h2->load_m1;
-    return this->load_m1 < h2->load_m1;
+//bool Host::operator <(const Host *h2){
+//    cout << this->load_m1 << " < " << h2->load_m1;
+//    return this->load_m1 < h2->load_m1;
+//}
+
+
+float Host::getCpuUsagePercentage(){
+    return this->getUsedCpu() / (float)max_cpu;
 }
+
+
+
+int Host::getId() const { return id; }
+
+int Host::getMaxCpu() const { return max_cpu; }
+
+int Host::getMaxMem() const { return max_mem; }
+
+string Host::getName() const { return name; }
+
+int Host::getState() const { return state; }
+
+int Host::getUsedCpu() const { return used_cpu; }
+
+int Host::getUsedMem() const { return used_mem; }
+
+void Host::setId(int id) { this->id = id; }
+
+void Host::setName(string name) { this->name = name; }
 
 
 
 bool compare_host_load(class Host *h1, class Host *h2){
-    cout << "comare: " << h1->load_m1 << " < " << h2->load_m1 << endl;
-    return h1->load_m1 < h2->load_m1;
+    return *h1 < *h2;
 }
-
 
 
