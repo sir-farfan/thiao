@@ -1,8 +1,24 @@
 /*
- * Host.h
- *
- *  Created on: 22/11/2011
- *      Author: ismael
+Host.h - Definition of the Host class for storing information about the hosts.
+
+--------------------------------------------------------------------------------
+
+Copyright (C) 2011 Ismael Farfán. All rights reserved.
+
+This file is part of Thiao.
+
+Thiao is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+Thiao is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+Thiao.  If not, see <http://www.gnu.org/licenses/>.
+
+--------------------------------------------------------------------------------
  */
 
 #ifndef HOST_H_
@@ -12,6 +28,8 @@
 #include<tinyxml.h>
 
 using namespace std;
+
+
 
 /*
  * Useful information about a host
@@ -43,23 +61,40 @@ public:
      */
     Host(TiXmlNode *host_node);
 
-
-
     /*
      * Access to the node to get its average load, the difference with what I
      * get from ONE is that ONE waits some time to get this information, and
      * with this is immediate
      */
-    float retrieve_host_load(void);
+    float retrieveHostLoad(void);
 
+    enum NodeState{
+        NODE_OFF = 4,
+        NODE_ON = 2
+    };
 
     /*
-     *
+     * Calculate the overall percentage of CPU usage: used/max
+     */
+    float getCpuUsagePercentage();
+
+    /*
+     * getters and setters
      */
     bool operator < (const Host &h2);
-    bool operator < (const Host *h2);
+//    bool operator < (const Host *h2);
+    int getId() const;
+    int getMaxCpu() const;
+    int getMaxMem() const;
+    string getName() const;
+    int getState() const;
+    int getUsedCpu() const;
+    int getUsedMem() const;
+    void setId(int id);
+    void setName(string name);
 
 
+private:
     string name; //host name
     float load_m1;  //Average CPU load in the last minute
     float load_m5;  //Average CPU load in the last 5 minutes
@@ -75,10 +110,6 @@ public:
     int used_cpu; // this corresponds to one of the load_m* properties
 
 
-    enum NodeState{
-        NODE_OFF = 4,
-        NODE_ON  = 2,
-    };
 };
 
 
