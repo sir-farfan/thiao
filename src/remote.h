@@ -28,6 +28,7 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 
 #include "Host.h"
+#include "VirtualMachine.h"
 
 using namespace std;
 
@@ -36,6 +37,14 @@ using namespace std;
  * @param hosts: (empty) list in which to put the names of the hosts
  */
 void fill_host_list(vector<Host*> *hosts);
+
+
+
+/*
+ * Gets the list of VMs using an RPC call to OpenNebula
+ * @param vms: (empty) list in which to save the VMs
+ */
+void fill_vm_list(vector<VirtualMachine*> *vms);
 
 
 
