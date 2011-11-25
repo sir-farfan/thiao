@@ -96,3 +96,40 @@ void fill_host_list(vector<class Host*> *hosts){
 
 
 
+void fill_vm_list(vector<VirtualMachine*> *vms){
+    xmlrpc_c::clientSimple client;
+    xmlrpc_c::value result_rpc;
+    string const service = "one.vmpool.info";
+
+    client.call(serverUrl, service, "si", &result_rpc, rpc_id.c_str(), -2);
+
+    if ( result_rpc.type() != 6 ){
+        cout << "expected an array but got something else, aborting: " << result_rpc.type() << endl;
+        return;
+    }
+
+    xmlrpc_c::value_array result_array(result_rpc);
+    vector<xmlrpc_c::value> const result(result_array.vectorValueValue());
+    xmlrpc_c::value_boolean status = static_cast<xmlrpc_c::value>(result[0]);
+    xmlrpc_c::value_string vm_xml = static_cast<xmlrpc_c::value_string>(result[1]);
+
+    if ( static_cast<bool>(status) ){
+        string xml_str = static_cast<string>(vm_xml);
+//        cout << "status ok" << endl << xml_str << endl;
+        TiXmlDocument root;
+        root.Parse(xml_str.c_str());
+        TiXmlNode *element = root.FirstChild("VM_POOL")->FirstChild("VM");
+        while(element != NULL){
+            cout << "VM found" << endl;
+            VirtualMachine *vm = new VirtualMachine(element);
+            vms->push_back(vm);
+            element = element->NextSibling("VM");
+        }
+    } else {
+        cout << "RPC call failed to retrieve VM list" << endl;
+        cout << static_cast<string>(vm_xml) << endl;
+    }
+
+}
+
+
