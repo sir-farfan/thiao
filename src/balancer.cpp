@@ -37,6 +37,7 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "remote.h"
 #include "Host.h"
+#include "VirtualMachine.h"
 
 using namespace std;
 
@@ -51,35 +52,70 @@ using namespace std;
 int main(int argc, char **argv){
 //TODO: learn to use iterators
     vector<class Host*> hlist;
+    vector<class VirtualMachine*> vms;
     list<class Host*> sorted;
     class Host *hl;
-    unsigned int i = 0;
+    unsigned int i = 0, j;
 
     fill_host_list(&hlist);
 
     while( i < hlist.size() ){
         hl = hlist[i];
-        cout << hl->name << endl;
-        cout << "load: " << hl->retrieve_host_load() << endl;
+        cout << hl->getName() << endl;
+        //work with the current workload instead with the ~10 minute workload
+        //reported by OpenNebula
+//        cout << "load: " << hl->retrieveHostLoad() << endl;
         sorted.push_back( hlist[i] );
 
         i++;
     }
 
+
+
     sorted.sort(compare_host_load);
     for (i=0; i<hlist.size(); i++){
         hlist[i] = sorted.front();
         sorted.pop_front();
-        cout << hlist[i]->load_m1 << endl;
+        cout << "used: " << hlist[i]->getUsedCpu() << " percentage: " <<
+                hlist[i]->getCpuUsagePercentage() << endl;
     }
 
 
 
+    fill_vm_list(&vms);
+    for (i=0; i<vms.size(); i++){
+        cout << "vmid " << vms[i]->id << endl;
+        cout << "host " << vms[i]->host_id << endl;
+    }
+
+    // Put every virtual machine with it's host
+    match_vm_host(&hlist, &vms);
+
+    /*
+     * The host in the top of the list is the one        H >--vm--\
+     * with the greatest load, the one in the bottom     H >---\  |
+     * is the one with the smallest, I'll try migrate   ...    |  |
+     * VMs among opposites in the list to even the       h <---/  |
+     * load.                                             h <--vm--/
+     */
+
+    // use only enabled hosts
+    for (i=0; i<hlist.size(); i++)
+        if (hlist[i]->getState() != Host::NODE_ON){
+            cout << hlist[i]->getName() << " --> is offline, dropping from the list" << endl;
+            hlist.erase(hlist.begin()+i);
+            i--;
+        }
+
+    i = 0;
+    j = hlist.size() - 1;
+    while (i < j){
+        hlist[i]->migrateVmFrom(hlist[j]);
+        i++; j--;
+    }
+
+
     return 0;
 }
-
-
-
-
 
 
