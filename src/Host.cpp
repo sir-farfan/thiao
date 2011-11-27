@@ -169,7 +169,7 @@ class VirtualMachine * Host::getMigrateableVm(){
     //Get rid of a vm as long as it doesn't turn idle.
     if (this->vms.size()<=1)
         return NULL;
-    return this->vms.back(); //greatest vm-id
+    return this->vms.front(); //greatest vm-id
 }
 
 
