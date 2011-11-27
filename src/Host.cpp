@@ -22,8 +22,11 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------------------
  */
 
-#include "Host.h"
+#include <xmlrpc-c/client_simple.hpp>
+#include <xmlrpc-c/base.hpp>
 
+#include "Host.h"
+#include "thiao.h"
 
 
 
@@ -123,6 +126,54 @@ float Host::getCpuUsagePercentage(){
 
 
 
+bool Host::addVm(class VirtualMachine *vm) {
+    if (this->id == vm->host_id){
+        this->vms.push_back(vm);
+        return true;
+    }
+    return false;
+}
+
+
+
+bool Host::migrateVmFrom(class Host *hfrom){
+    xmlrpc_c::clientSimple client;
+    xmlrpc_c::value result_rpc;
+    string const service = "one.vm.migrate";
+    class VirtualMachine *vm = hfrom->getMigrateableVm();
+
+    if (vm == NULL || this->state != Host::NODE_ON)
+        return false;
+
+    cout << "Migrating VM " << vm->id << " from " << hfrom->id << " to " << this->id << endl;
+
+    client.call(serverUrl, service, "siib", &result_rpc, rpc_id.c_str(),
+            vm->id, this->id, true); // use live migration
+
+    xmlrpc_c::value_array result_array(result_rpc);
+    vector<xmlrpc_c::value> const result(result_array.vectorValueValue());
+    xmlrpc_c::value_boolean status = static_cast<xmlrpc_c::value>(result[0]);
+
+    if ( static_cast<bool>(status))
+        return true;
+    else{ //an error occurred
+        xmlrpc_c::value_string msg = static_cast<xmlrpc_c::value_string>(result[1]);
+        cout << static_cast<string>(msg) << endl;
+    }
+    return false;
+}
+
+
+
+class VirtualMachine * Host::getMigrateableVm(){
+    //Get rid of a vm as long as it doesn't turn idle.
+    if (this->vms.size()<=1)
+        return NULL;
+    return this->vms.back(); //greatest vm-id
+}
+
+
+
 int Host::getId() const { return id; }
 
 int Host::getMaxCpu() const { return max_cpu; }
@@ -145,6 +196,21 @@ void Host::setName(string name) { this->name = name; }
 
 bool compare_host_load(class Host *h1, class Host *h2){
     return *h1 < *h2;
+}
+
+
+
+void match_vm_host(vector<class Host*> *host, vector<class VirtualMachine*> *vms){
+    unsigned int i;
+    VirtualMachine *vm;
+
+    while ( !vms->empty() ){
+        vm = vms->back();
+        for (i=0; i<host->size(); i++) // O(vm*host)
+            if ( (*host)[i]->addVm(vm) )
+                break;
+        vms->pop_back();
+    }
 }
 
 
