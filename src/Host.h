@@ -25,7 +25,10 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #define HOST_H_
 
 #include<iostream>
+#include<vector>
 #include<tinyxml.h>
+
+#include "VirtualMachine.h"
 
 using namespace std;
 
@@ -79,6 +82,16 @@ public:
     float getCpuUsagePercentage();
 
     /*
+     * Asks the other host which VM it doens't want and makes it one of its own
+     */
+    bool migrateVmFrom(class Host *hfrom);
+
+    /*
+     * Returns a VM that is eligible for migration (in any)
+     */
+    class VirtualMachine * getMigrateableVm();
+
+    /*
      * getters and setters
      */
     bool operator < (const Host &h2);
@@ -92,6 +105,8 @@ public:
     int getUsedMem() const;
     void setId(int id);
     void setName(string name);
+
+    bool addVm(class VirtualMachine *vm);
 
 
 private:
@@ -109,6 +124,8 @@ private:
     int max_cpu;
     int used_cpu; // this corresponds to one of the load_m* properties
 
+    vector<class VirtualMachine*> vms; //VMs running in this host
+
 
 };
 
@@ -121,6 +138,13 @@ private:
  * @return: true if the load of host 1 is lower than the load of host 2
  */
 bool compare_host_load(class Host *h1, class Host *h2);
+
+
+
+/*
+ * Fill the VM list of the host using
+ */
+void match_vm_host(vector<class Host*> *host, vector<class VirtualMachine*> *vms);
 
 
 
