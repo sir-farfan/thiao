@@ -25,11 +25,19 @@ slurm scontrol update nodename=fg10 state=[idle|down]
 */
 
 #include <sqlite3.h>
+#include <xmlrpc-c/client_simple.hpp>
+#include <xmlrpc-c/base.hpp>
+
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
+
 #include "thiao.h"
+#include "remote.h"
 
 using namespace std;
+
+
 
 void usage(){
     cout << "Creates a virtual machine based on its hostname and registers its ID" << endl;
@@ -44,8 +52,7 @@ int main(int argc, char ** argv){
     sqlite3 *db;
     list <string> hlist, running_vms;
     int rc;
-    char *errmsg = NULL;
-    char onemsg[10], oneid[10];
+    char *errmsg = NULL, oneid[10];
     bool force_vm_creation = false;
 
     //--------argument validation-------
@@ -90,14 +97,19 @@ int main(int argc, char ** argv){
             if ( !running_vms.empty() && force_vm_creation )
                 cout << "forcing the creation of " << hlist.front() << endl;
             //create the VM
-            string exec = cmd + vm_script_dir + "/";
-            exec += hlist.front() + ".one";
 
-            //FILE *f = popen("cat /tmp/o", "r");
-            FILE *f = popen(exec.c_str(), "r");
-            fscanf(f, "%s %s", onemsg, oneid); //ID: 40
-            cout << onemsg << " " << oneid << endl;
-            if ( strcmp(onemsg, "ID:") ){
+            ifstream t((vm_script_dir + "/" + hlist.front() + ".one").c_str());
+            string vm_def((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
+
+            xmlrpc_c::value value;
+            xmlrpc_c::paramList param;
+            param.add(xmlrpc_c::value_string(vm_def));
+            if ( one_rpc("one.vm.allocate", &param, &value) ){
+                xmlrpc_c::value_int vi = static_cast<xmlrpc_c::value_int>(value);
+                sprintf(oneid, "%d", static_cast<int>(vi));
+                cout << "oneid: " << oneid << endl;
+            }
+            else{
                 cout << "error trying to create the VM," << endl;
                 return 0;
             }
@@ -107,8 +119,8 @@ int main(int argc, char ** argv){
             cout << query << endl;
             rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errmsg); //where hostname = '%s'")
         } else {
-            cout << "This VM seems to exists: " << hlist.front() << " NOT starting it again, ";
-            cout << "you can change this with --force." << endl;
+            cout << "This VM seems to exists: " << hlist.front() << " NOT starting it again, "
+                    "you can change this with --force." << endl;
         }
 
         hlist.pop_front();
@@ -116,6 +128,7 @@ int main(int argc, char ** argv){
     return 0;
 
 }
+
 
 
 
