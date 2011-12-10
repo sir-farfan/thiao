@@ -25,7 +25,10 @@ Thiao.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef REMOTE_H_
 #define REMOTE_H_
 
+#include <xmlrpc-c/base.hpp>
+
 #include <vector>
+#include <string.h>
 
 #include "Host.h"
 #include "VirtualMachine.h"
@@ -46,6 +49,17 @@ void fill_host_list(vector<Host*> *hosts);
  */
 void fill_vm_list(vector<VirtualMachine*> *vms);
 
+
+
+/*
+ * Realices the actual RPC call, relieving some stress from other pieces of code
+ * @param service: string of the function to call
+ * @param params: paramList object with the parameters of the function, NULL for
+ *                no parameters. Exclude session string
+ * @param rpc_value: (out) ONE stores the actual result/information here
+ * @return: true if RPC is successful
+ */
+bool one_rpc(string service, xmlrpc_c::paramList *params, xmlrpc_c::value *result);
 
 
 #endif /* REMOTE_H_ */
