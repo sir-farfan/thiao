@@ -133,3 +133,35 @@ void fill_vm_list(vector<VirtualMachine*> *vms){
 }
 
 
+
+bool one_rpc(const string service, xmlrpc_c::paramList *params, xmlrpc_c::value *rpc_value){
+    xmlrpc_c::clientSimple client;
+    xmlrpc_c::value result_rpc;
+    xmlrpc_c::paramList param;
+    unsigned int i;
+
+    param.add(xmlrpc_c::value_string(rpc_id));
+
+    if (params != NULL)
+        for (i=0; i<params->size(); i++)
+            param.add((*params)[i]);
+
+    client.call(serverUrl, service, param, &result_rpc);
+
+    if ( result_rpc.type() != result_rpc.TYPE_ARRAY ){
+        cout << "expected an array but got something else, aborting: " << result_rpc.type() << endl;
+        return false;
+    }
+
+    xmlrpc_c::value_array result_array(result_rpc);
+    vector<xmlrpc_c::value> const result(result_array.vectorValueValue());
+    xmlrpc_c::value_boolean status = static_cast<xmlrpc_c::value>(result[0]);
+
+    //save what we need
+    *rpc_value = result[1];
+
+    return static_cast<bool>(status);
+}
+
+
+
