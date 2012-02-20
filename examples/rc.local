@@ -19,10 +19,10 @@
 
 mount /mnt
 
-if [ -f /mnt/mictx.sh ]
+if [ -f /mnt/pre-rc.sh ]
 then
   echo cargando el contexto
-  . /mnt/mictx.sh
+  . /mnt/pre-rc.sh
 else
   echo no hay contexto
   exit -1
@@ -33,12 +33,12 @@ echo $HOSTNAME > /etc/hostname
 hostname $HOSTNAME
 echo 127.0.0.1 $HOSTNAME >> /etc/hosts
 
-if [ -n "$IP_PUBLIC" ]; then
-	ifconfig eth0 $IP_PUBLIC
+if [ -n "$IP0" ]; then
+	ifconfig eth0 $IP0
 fi
 
-if [ -n "$IP_LOCAL" ]; then
-    ifconfig eth1 $IP_LOCAL
+if [ -n "$IP1" ]; then
+    ifconfig eth1 $IP1
 fi
 
 if [ -n "$NETMASK" ]; then
@@ -70,8 +70,8 @@ if [ -n "$USERNAME" ]; then
 fi
 
 
-if [ -f /mnt/mio.sh ]; then
-	bash /mnt/mio.sh
+if [ -f /mnt/post-rc.sh ]; then
+	bash /mnt/post-rc.sh
 fi
 
 

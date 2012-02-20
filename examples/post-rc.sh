@@ -1,4 +1,9 @@
 #!/bin/bash
+#----------------------------------------------------------
+# Copyright 2011-2012, Ismael Farfán for the Thiao project - 2011
+#
+# Script to execute after rc.local in order to mount filesystems, update configuration files and restart services 
+#----------------------------------------------------------
 
 con=/mnt
 
@@ -13,24 +18,20 @@ fi
 
 #--------------------------------------------
 
-if [ -f $con/slurm.conf ]
-then
+if [ -f $con/slurm.conf ]; then
 	cp $con/slurm.conf /etc/slurm-llnl/
 fi
 
-if [ -f $con/rc.local ]
-then
+if [ -f $con/rc.local ]; then
 	cp $con/rc.local /etc/rc.local
 	chmod +x /etc/rc.local
 fi
 
-if [ -f $con/hosts ]
-then
+if [ -f $con/hosts ]; then
 	cp $con/hosts /etc
 fi
 
-if [ -f $con/resolv.conf ]
-then
+if [ -f $con/resolv.conf ]; then
 	cp $con/resolv.conf /etc
 fi
 

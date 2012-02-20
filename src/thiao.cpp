@@ -130,3 +130,10 @@ int make_list_callback(void *ids, int argc, char **argv, char **azColName){
 }
 
 
+
+void readConfig(){
+    /*
+     * ifstream.getline(char *buffer)
+     */
+}
+
