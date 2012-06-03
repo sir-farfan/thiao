@@ -5,12 +5,14 @@
 # Script to execute after rc.local in order to mount filesystems, update configuration files and restart services 
 #----------------------------------------------------------
 
+echo ... post-rc.sh ...
+
 con=/mnt
 
-if [ -f /mnt/mictx.sh ]
+if [ -f /mnt/context.sh ]
 then
   echo cargando el contexto
-  . /mnt/mictx.sh
+  . /mnt/context.sh
 else
   echo no hay contexto
   exit -1
@@ -22,32 +24,27 @@ if [ -f $con/slurm.conf ]; then
 	cp $con/slurm.conf /etc/slurm-llnl/
 fi
 
-if [ -f $con/rc.local ]; then
-	cp $con/rc.local /etc/rc.local
-	chmod +x /etc/rc.local
+if [ -f $con/munge.key ]; then
+        cp $con/munge.key /etc/munge/
 fi
 
-if [ -f $con/hosts ]; then
-	cp $con/hosts /etc
+if [ -f $con/prolog.sh ]; then
+        cp $con/prolog.sh /usr/local/bin/
+        chmod a+x /usr/local/bin/prolog.sh
 fi
 
-if [ -f $con/resolv.conf ]; then
-	cp $con/resolv.conf /etc
-fi
+for i in  rc.local  hosts  resolv.conf  fstab  groups  group  shadow  passwd ; do 
+   if [ -f $con/$i ]; then
+      cp $con/$i /etc
+   fi
+done
 
-if [ "$HN_BASE" = "fg" ]; then
-	echo 192.168.11.85 nas-0-0 nas-0-0.idpm >> /etc/hosts
-	echo nas-0-0:/fgstorage/project/opennebula   /pub    nfs     defaults        0 0 >> /etc/fstab
-else
-	echo cosa
-	#echo kriemhild:/pub    /pub    nfs     defaults        0 0 >> /etc/fstab 
-fi
-
-/etc/init.d/nfs-common restart
+sleep 5
+mkdir -p /distrib
+#/etc/init.d/nfs-common restart
 mount -a
 
 /etc/init.d/slurm-llnl restart
 
-#IP=2435
-#echo $(($IP%50+2))
+mount -a
 
